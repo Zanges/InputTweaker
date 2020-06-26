@@ -1,8 +1,21 @@
 ﻿<Application x:Class="InputTweaker.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:InputTweaker">
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             d1p1:Ignorable="d" 
+             xmlns:d1p1="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:ui="clr-namespace:InputTweaker.Logic.Ui"
+             Startup="App_Startup"
+             Exit="App_Exit"
+             >
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <vm:ViewModelLocator xmlns:vm="clr-namespace:InputTweaker.ViewModel"
+                                 x:Key="Locator" />
+            <ui:MessageListener x:Key="MessageListener"  />
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="DefaultStyle.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

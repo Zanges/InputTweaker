@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows;
+using InputTweaker.View;
 
 namespace InputTweaker
 {
@@ -20,10 +21,8 @@ namespace InputTweaker
         [DllImport("user32.dll")]
         private static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
 
-        protected override void OnStartup(StartupEventArgs startupEventArgs)
+        void App_Startup(object sender, StartupEventArgs startupEventArgs)
         {
-            base.OnStartup(startupEventArgs);
-
             string[] args = startupEventArgs.Args;
 
             if (args.Contains("-c") || args.Contains("--console"))
@@ -37,15 +36,13 @@ namespace InputTweaker
                 // GUI mode
                 ShowWindow(GetConsoleWindow(), 0 /*SW_HIDE*/);
 
-                var window = new MainWindow();
-
+                Window window = new MainWindow();
                 window.ShowDialog();
             }
         }
 
-        protected override void OnExit(ExitEventArgs e)
+        void App_Exit(object sender, ExitEventArgs exitEventArgs)
         {
-            base.OnExit(e);
         }
     }
 }
