@@ -3,10 +3,11 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:customControl="clr-namespace:InputTweaker.CustomControl"
         mc:Ignorable="d"
         Height="350"
         Width="800"
-        Title="{Binding WindowTitle, Mode=OneTime}"
+        Title="Input Tweaker"
         DataContext="{Binding Source={StaticResource Locator}, Path=Main}"
         >
     <Window.IsEnabled>
@@ -21,6 +22,14 @@
                 VerticalAlignment="Top"
                 Margin="0, 4, 4, 0"
         />
+        <Button Content="TEST" 
+                Command="{Binding TestCommand, Mode=OneWay}"
+                Width="110"
+                Height="32"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Bottom"
+                Margin="0, 0, 4, 44"
+        />
         <Button Content="ShowChild" 
                 Command="{Binding OpenChildCommand, Mode=OneWay}"
                 Width="110"
@@ -29,6 +38,6 @@
                 VerticalAlignment="Bottom"
                 Margin="0, 0, 4, 4"
         />
-        <ListBox Margin="4, 4, 120, 4"/>
+        <customControl:LoggingListBox Margin="4, 4, 120, 4" ItemsSource="{Binding LogEntriesView}" IsSynchronizedWithCurrentItem="True" AutoScroll="True" />
     </Grid>
 </Window>

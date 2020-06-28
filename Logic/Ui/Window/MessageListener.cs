@@ -1,8 +1,10 @@
 ﻿using GalaSoft.MvvmLight.Messaging;
 using InputTweaker.View;
+using InputTweaker.View.Generic;
 using InputTweaker.ViewModel;
+using InputTweaker.ViewModel.Generic;
 
-namespace InputTweaker.Logic.Ui
+namespace InputTweaker.Logic.Ui.Window
 {
     public class MessageListener
     {
@@ -36,6 +38,22 @@ namespace InputTweaker.Logic.Ui
                 msg =>
                 {
                     ProfileWindow window = new ProfileWindow();
+                    window.ShowDialog();
+                });
+            
+            Messenger.Default.Register<OpenGenericMessageWindowMessage>(
+                this,
+                msg =>
+                {
+                    MessageWindow window = new MessageWindow();
+                    
+                    
+                    if (window.DataContext is MessageViewModel model)
+                    {
+                        model.Title = msg.Title;
+                        model.Text = msg.Text;
+                    }
+                    
                     window.ShowDialog();
                 });
         }

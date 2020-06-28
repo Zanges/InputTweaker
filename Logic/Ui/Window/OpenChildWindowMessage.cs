@@ -1,4 +1,4 @@
-﻿namespace InputTweaker.Logic.Ui
+﻿namespace InputTweaker.Logic.Ui.Window
 {
     public class OpenChildWindowMessage
     {

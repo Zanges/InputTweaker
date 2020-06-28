@@ -2,7 +2,7 @@
 
 namespace InputTweaker.View
 {
-    public partial class ProfileWindow : Window
+    public partial class ProfileWindow
     {
         public ProfileWindow()
         {

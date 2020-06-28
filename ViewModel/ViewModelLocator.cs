@@ -15,6 +15,7 @@
 using CommonServiceLocator;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
+using InputTweaker.ViewModel.Generic;
 
 namespace InputTweaker.ViewModel
 {
@@ -38,11 +39,13 @@ namespace InputTweaker.ViewModel
             SimpleIoc.Default.Register<MainViewModel>();
             SimpleIoc.Default.Register<ChildViewModel>();
             SimpleIoc.Default.Register<ProfileViewModel>();
+            SimpleIoc.Default.Register<MessageViewModel>();
         }
 
         public MainViewModel Main => ServiceLocator.Current.GetInstance<MainViewModel>();
         public ChildViewModel Child => ServiceLocator.Current.GetInstance<ChildViewModel>();
         public ProfileViewModel Profile => ServiceLocator.Current.GetInstance<ProfileViewModel>();
+        public MessageViewModel Message => ServiceLocator.Current.GetInstance<MessageViewModel>();
 
         public static void Cleanup()
         {
