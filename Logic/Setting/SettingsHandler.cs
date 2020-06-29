@@ -19,9 +19,9 @@ namespace InputTweaker.Logic.Setting
             
             Settings[SettingKey.TriggerActionMap] = new Dictionary<TriggerType, Dictionary<ITriggerState, Queue>>
             {
-                [TriggerType.Keyboard] = new Dictionary<ITriggerState, Queue>
+                [TriggerType.HardwareKeyboard] = new Dictionary<ITriggerState, Queue>
                 {
-                    [new KeyboardTriggerState(KeyCode.W, true)] = new Queue(new []
+                    [new HardwareKeyboardTriggerState(KeyCode.W, true)] = new Queue(new []
                     {
                         new LogMessageAction(),
                     }),

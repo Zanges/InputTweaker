@@ -2,12 +2,12 @@
 
 namespace InputTweaker.Logic.Trigger.TriggerState
 {
-    public class KeyboardTriggerState : ITriggerState
+    public class HardwareKeyboardTriggerState : ITriggerState
     {
         public KeyCode KeyCode { get; private set; }
         public bool Pressed { get; private set; }
 
-        public KeyboardTriggerState(KeyCode keyCode, bool pressed)
+        public HardwareKeyboardTriggerState(KeyCode keyCode, bool pressed)
         {
             KeyCode = keyCode;
             Pressed = pressed;

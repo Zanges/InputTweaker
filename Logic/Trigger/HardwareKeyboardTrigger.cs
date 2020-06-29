@@ -5,11 +5,11 @@ using InputTweaker.Logic.Trigger.TriggerState;
 
 namespace InputTweaker.Logic.Trigger
 {
-    public class KeyboardTrigger
+    public class HardwareKeyboardTrigger
     {
         private readonly KeyboardHook _hook;
         
-        public KeyboardTrigger(KeyboardTriggerState triggerState, Queue actionQueue)
+        public HardwareKeyboardTrigger(HardwareKeyboardTriggerState triggerState, Queue actionQueue)
         {
             _hook = new KeyboardHook(KeyboardFilter.All, (ref KeyStroke keyStroke) =>
             {

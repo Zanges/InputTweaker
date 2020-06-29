@@ -3,7 +3,8 @@
     public enum TriggerType
     {
         None,
-        Keyboard,
+        HardwareKeyboard,
+        VirtualKeyboard,
         Mouse,
         Serial,
     }

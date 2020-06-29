@@ -12,7 +12,7 @@ namespace InputTweaker.Logic.Trigger
 {
     public static class TriggerManager
     {
-        private static readonly List<KeyboardTrigger> KeyboardTriggers = new List<KeyboardTrigger>();
+        private static readonly List<HardwareKeyboardTrigger> KeyboardTriggers = new List<HardwareKeyboardTrigger>();
         
         public static void Initialize()
         {
@@ -26,12 +26,12 @@ namespace InputTweaker.Logic.Trigger
                 {
                     switch (triggerTypeSet.Key)
                     {
-                        case TriggerType.Keyboard:
+                        case TriggerType.HardwareKeyboard:
                             Dictionary<ITriggerState, Queue> triggerStateToActionQueueMap = triggerTypeSet.Value;
 
                             foreach (KeyValuePair<ITriggerState,Queue> triggerStateToActionSet in triggerStateToActionQueueMap)
                             {
-                                KeyboardTriggers.Add(new KeyboardTrigger((KeyboardTriggerState) triggerStateToActionSet.Key, triggerStateToActionSet.Value));
+                                KeyboardTriggers.Add(new HardwareKeyboardTrigger((HardwareKeyboardTriggerState) triggerStateToActionSet.Key, triggerStateToActionSet.Value));
                             }
                             break;
                         
@@ -55,7 +55,7 @@ namespace InputTweaker.Logic.Trigger
         {
             if (InputInterceptorWrapper.Instance.IsReady)
             {
-                foreach (KeyboardTrigger keyboardTrigger in KeyboardTriggers)
+                foreach (HardwareKeyboardTrigger keyboardTrigger in KeyboardTriggers)
                 {
                     keyboardTrigger.Cleanup();
                 }
