@@ -12,8 +12,9 @@ namespace InputTweaker.Logic.Trigger
 {
     public static class TriggerManager
     {
-        private static readonly List<HardwareKeyboardTrigger> KeyboardTriggers = new List<HardwareKeyboardTrigger>();
-        
+        private static readonly List<HardwareKeyboardTrigger> HardwareKeyboardTriggers = new List<HardwareKeyboardTrigger>();
+        private static readonly List<VirtualKeyboardTrigger> VirtualKeyboardTriggers = new List<VirtualKeyboardTrigger>();
+
         public static void Initialize()
         {
             if (InputInterceptorWrapper.Instance.Initialize())
@@ -24,17 +25,25 @@ namespace InputTweaker.Logic.Trigger
 
                 foreach (KeyValuePair<TriggerType, Dictionary<ITriggerState, Queue>> triggerTypeSet in triggerToActionMap)
                 {
+                    Dictionary<ITriggerState, Queue> triggerStateToActionQueueMap = triggerTypeSet.Value;
+                    
                     switch (triggerTypeSet.Key)
                     {
                         case TriggerType.HardwareKeyboard:
-                            Dictionary<ITriggerState, Queue> triggerStateToActionQueueMap = triggerTypeSet.Value;
-
                             foreach (KeyValuePair<ITriggerState,Queue> triggerStateToActionSet in triggerStateToActionQueueMap)
                             {
-                                KeyboardTriggers.Add(new HardwareKeyboardTrigger((HardwareKeyboardTriggerState) triggerStateToActionSet.Key, triggerStateToActionSet.Value));
+                                HardwareKeyboardTriggers.Add(new HardwareKeyboardTrigger((HardwareKeyboardTriggerState) triggerStateToActionSet.Key, triggerStateToActionSet.Value));
                             }
                             break;
                         
+                        case TriggerType.VirtualKeyboard:
+                            foreach (KeyValuePair<ITriggerState,Queue> triggerStateToActionSet in triggerStateToActionQueueMap)
+                            {
+                                VirtualKeyboardTriggers.Add(new VirtualKeyboardTrigger((VirtualKeyboardTriggerState) triggerStateToActionSet.Key, triggerStateToActionSet.Value));
+                            }
+
+                            break;
+                            
                         case TriggerType.Mouse:
                             throw new NotImplementedException();
 
@@ -55,11 +64,24 @@ namespace InputTweaker.Logic.Trigger
         {
             if (InputInterceptorWrapper.Instance.IsReady)
             {
-                foreach (HardwareKeyboardTrigger keyboardTrigger in KeyboardTriggers)
+                foreach (HardwareKeyboardTrigger hardwareKeyboardTrigger in HardwareKeyboardTriggers)
                 {
-                    keyboardTrigger.Cleanup();
+                    hardwareKeyboardTrigger.Cleanup();
                 }
+                HardwareKeyboardTriggers.Clear();
+                
+                foreach (VirtualKeyboardTrigger virtualKeyboardTrigger in VirtualKeyboardTriggers)
+                {
+                    virtualKeyboardTrigger.Cleanup();
+                }
+                VirtualKeyboardTriggers.Clear();
             }
+        }
+
+        public static void Reinitialize()
+        {
+            Cleanup();
+            Initialize();
         }
     }
 }

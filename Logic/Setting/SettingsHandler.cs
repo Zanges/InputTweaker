@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Windows.Forms;
 using System.Windows.Input;
 using InputInterceptorNS;
 using InputTweaker.Logic.Action;
@@ -21,11 +22,18 @@ namespace InputTweaker.Logic.Setting
             {
                 [TriggerType.HardwareKeyboard] = new Dictionary<ITriggerState, Queue>
                 {
-                    [new HardwareKeyboardTriggerState(KeyCode.W, true)] = new Queue(new []
+                    [new HardwareKeyboardTriggerState(KeyCode.W, true, false)] = new Queue(new []
                     {
                         new LogMessageAction(),
                     }),
-                }
+                },
+                [TriggerType.VirtualKeyboard] = new Dictionary<ITriggerState, Queue>
+                {
+                    [new VirtualKeyboardTriggerState(Keys.W, true, false)] = new Queue(new []
+                    {
+                        new LogMessageAction(),
+                    }),
+                },
             };
         }
 

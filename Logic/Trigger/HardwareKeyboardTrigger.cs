@@ -15,6 +15,11 @@ namespace InputTweaker.Logic.Trigger
             {
                 if (keyStroke.Code == triggerState.KeyCode && triggerState.MatchesPressed(keyStroke.State))
                 {
+                    if (triggerState.Block)
+                    {
+                        keyStroke =  new KeyStroke();
+                    }
+                    
                     Queue newActionQueue = (Queue) actionQueue.Clone();
                     ActionBase firstAction = (ActionBase) newActionQueue.Dequeue();
                     
