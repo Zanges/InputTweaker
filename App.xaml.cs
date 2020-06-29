@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using InputTweaker.Logic.Initialisation;
 using InputTweaker.Logic.Setting;
+using InputTweaker.Logic.Trigger;
 using InputTweaker.View;
 
 namespace InputTweaker
@@ -30,7 +31,8 @@ namespace InputTweaker
             SettingsHandler.Initialize();
             if (!args.Contains("--notrigger"))
             {
-                TriggerInitialisation.Instance.Initialize();
+                //TriggerInitialisation.Instance.Initialize();
+                TriggerManager.Initialize();
             }
 
             if (args.Contains("-g") || args.Contains("--guiless"))
@@ -51,7 +53,8 @@ namespace InputTweaker
 
         void App_Exit(object sender, ExitEventArgs exitEventArgs)
         {
-            TriggerInitialisation.Instance.Cleanup();
+            //TriggerInitialisation.Instance.Cleanup();
+            TriggerManager.Cleanup();
         }
     }
 }

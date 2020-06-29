@@ -1,37 +1,30 @@
-﻿using System;
+﻿using System.Collections;
 using InputInterceptorNS;
-using InputTweaker.Logic.Enum;
-using InputTweaker.Logic.Initialisation;
-using InputTweaker.Logic.Setting;
-using InputTweaker.Logic.Ui.Common;
+using InputTweaker.Logic.Action;
 
 namespace InputTweaker.Logic.Trigger
 {
     public class KeyboardTrigger
     {
-        public static readonly KeyboardTrigger Instance = new KeyboardTrigger(); // Singleton
-
-        private readonly LogWriter _logWriter = new LogWriter("Keyboard Input");
-        private KeyboardHook _keyboardHook;
-
-        private KeyboardTrigger()
-        {
-        }
+        private readonly KeyboardHook _hook;
         
-        public void Initialize()
+        public KeyboardTrigger(KeyCode keyCode, Queue actionQueue)
         {
-            _keyboardHook = new KeyboardHook(KeyboardFilter.All, (ref KeyStroke keyStroke) =>
+            _hook = new KeyboardHook(KeyboardFilter.All, (ref KeyStroke keyStroke) =>
             {
-                if ((bool) SettingsHandler.GetSetting(SettingKey.LogUnrecognized.ToString()))
+                if (keyStroke.Code == keyCode)
                 {
-                    _logWriter.LogMessage($"{keyStroke.Code} {keyStroke.State} {keyStroke.Information}");
+                    Queue newActionQueue = (Queue) actionQueue.Clone();
+                    ActionBase firstAction = (ActionBase) newActionQueue.Dequeue();
+                    
+                    firstAction.Execute(newActionQueue, true);
                 }
             });
         }
 
         public void Cleanup()
         {
-            _keyboardHook.Dispose();
+            _hook.Dispose();
         }
     }
 }

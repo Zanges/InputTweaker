@@ -107,12 +107,13 @@
     <Compile Include="Logic\Enum\JoystickAction.cs" />
     <Compile Include="Logic\Enum\MouseAction.cs" />
     <Compile Include="Logic\Enum\SettingKey.cs" />
-    <Compile Include="Logic\Enum\SignalType.cs" />
+    <Compile Include="Logic\Enum\TriggerType.cs" />
     <Compile Include="Logic\Initialisation\InputInterceptorWrapper.cs" />
-    <Compile Include="Logic\Initialisation\TriggerInitialisation.cs" />
     <Compile Include="Logic\Setting\SettingsHandler.cs" />
     <Compile Include="Logic\Trigger\KeyboardTrigger.cs" />
+    <Compile Include="Logic\Trigger\KeyboardTriggerOld.cs" />
     <Compile Include="Logic\Trigger\MouseTrigger.cs" />
+    <Compile Include="Logic\Trigger\TriggerManager.cs" />
     <Compile Include="Logic\Ui\Common\LogWriter.cs" />
     <Compile Include="Logic\Ui\Window\MessageListener.cs" />
     <Compile Include="Logic\Ui\Window\OpenChildWindowMessage.cs" />

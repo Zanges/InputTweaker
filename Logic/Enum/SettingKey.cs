@@ -3,5 +3,6 @@
     public enum SettingKey
     {
         LogUnrecognized,
+        TriggerActionMap,
     }
 }

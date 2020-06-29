@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.Windows.Input;
 using InputInterceptorNS;
 using InputTweaker.Logic.Action;
@@ -19,7 +20,7 @@ namespace InputTweaker.Logic.Trigger
         
         private readonly List<MouseButton> _pressedButtons = new List<MouseButton>();
         
-        private Dictionary<MouseButton, Queue<ActionBase>> _actionQueue = new Dictionary<MouseButton, Queue<ActionBase>>();
+        private Dictionary<MouseButton, Queue> _actionQueue = new Dictionary<MouseButton, Queue>();
 
         private MouseTrigger()
         {
@@ -39,7 +40,7 @@ namespace InputTweaker.Logic.Trigger
                         if (!keyValuePair.Value) // released
                         {
                             _pressedButtons.Remove(keyValuePair.Key);
-                            if ((bool) SettingsHandler.GetSetting(SettingKey.LogUnrecognized.ToString()))
+                            if ((bool) SettingsHandler.GetSetting(SettingKey.LogUnrecognized))
                             {
                                 _logWriter.LogMessage($"{keyValuePair.Key} released");
                             }
@@ -50,14 +51,14 @@ namespace InputTweaker.Logic.Trigger
                         if (keyValuePair.Value) // button is newly pressed
                         {
                             _pressedButtons.Add(keyValuePair.Key);
-                            if ((bool) SettingsHandler.GetSetting(SettingKey.LogUnrecognized.ToString()))
+                            if ((bool) SettingsHandler.GetSetting(SettingKey.LogUnrecognized))
                             {
                                 _logWriter.LogMessage($"{keyValuePair.Key} pressed");
                             }
 
                             if (_actionQueue.ContainsKey(keyValuePair.Key))
                             {
-                                _actionQueue[keyValuePair.Key].Dequeue().Execute(_actionQueue[keyValuePair.Key], keyValuePair.Key);
+                                ((ActionBase)_actionQueue[keyValuePair.Key].Dequeue()).Execute(_actionQueue[keyValuePair.Key], keyValuePair.Key);
                             }
                         }
                     }
@@ -72,7 +73,7 @@ namespace InputTweaker.Logic.Trigger
 
             _mouseHookScroll = new MouseHook(MouseFilter.ScrollHorizontal | MouseFilter.ScrollVertical, (ref MouseStroke mouseStroke) =>
             {
-                if ((bool)SettingsHandler.GetSetting(SettingKey.LogUnrecognized.ToString()))
+                if ((bool)SettingsHandler.GetSetting(SettingKey.LogUnrecognized))
                 {
                     _logWriter.LogMessage($"{mouseStroke.State} {mouseStroke.Rolling} {mouseStroke.Flags}");
                 }
@@ -118,7 +119,7 @@ namespace InputTweaker.Logic.Trigger
         {
             if (!_actionQueue.ContainsKey(button))
             {
-                _actionQueue[button] = new Queue<ActionBase>();
+                _actionQueue[button] = new Queue();
             }
 
             _actionQueue[button].Enqueue(action);

@@ -1,6 +1,6 @@
 ﻿namespace InputTweaker.Logic.Enum
 {
-    public enum SignalType
+    public enum TriggerType
     {
         None,
         Keyboard,
