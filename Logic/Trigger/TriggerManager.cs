@@ -6,6 +6,7 @@ using InputTweaker.Logic.Action;
 using InputTweaker.Logic.Enum;
 using InputTweaker.Logic.Initialisation;
 using InputTweaker.Logic.Setting;
+using InputTweaker.Logic.Trigger.TriggerState;
 
 namespace InputTweaker.Logic.Trigger
 {
@@ -17,18 +18,20 @@ namespace InputTweaker.Logic.Trigger
         {
             if (InputInterceptorWrapper.Instance.Initialize())
             {
-                Dictionary<TriggerType, Dictionary<System.Enum, Queue>> triggerToActionMap =
-                    (Dictionary<TriggerType, Dictionary<System.Enum, Queue>>)
+                Dictionary<TriggerType, Dictionary<ITriggerState, Queue>> triggerToActionMap =
+                    (Dictionary<TriggerType, Dictionary<ITriggerState, Queue>>)
                     SettingsHandler.GetSetting(SettingKey.TriggerActionMap);
 
-                foreach (KeyValuePair<TriggerType, Dictionary<System.Enum, Queue>> triggerTypeSet in triggerToActionMap)
+                foreach (KeyValuePair<TriggerType, Dictionary<ITriggerState, Queue>> triggerTypeSet in triggerToActionMap)
                 {
                     switch (triggerTypeSet.Key)
                     {
                         case TriggerType.Keyboard:
-                            foreach (KeyValuePair<System.Enum, Queue> keyToActionQueueSet in triggerTypeSet.Value)
+                            Dictionary<ITriggerState, Queue> triggerStateToActionQueueMap = triggerTypeSet.Value;
+
+                            foreach (KeyValuePair<ITriggerState,Queue> triggerStateToActionSet in triggerStateToActionQueueMap)
                             {
-                                KeyboardTriggers.Add(new KeyboardTrigger((KeyCode) keyToActionQueueSet.Key, keyToActionQueueSet.Value));
+                                KeyboardTriggers.Add(new KeyboardTrigger((KeyboardTriggerState) triggerStateToActionSet.Key, triggerStateToActionSet.Value));
                             }
                             break;
                         
@@ -38,6 +41,9 @@ namespace InputTweaker.Logic.Trigger
                         case TriggerType.Serial:
                             throw new NotImplementedException();
 
+                        case TriggerType.None:
+                            break;
+                        
                         default:
                             throw new NotImplementedException();
                     }

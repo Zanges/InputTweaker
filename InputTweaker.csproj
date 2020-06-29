@@ -114,6 +114,8 @@
     <Compile Include="Logic\Trigger\KeyboardTriggerOld.cs" />
     <Compile Include="Logic\Trigger\MouseTrigger.cs" />
     <Compile Include="Logic\Trigger\TriggerManager.cs" />
+    <Compile Include="Logic\Trigger\TriggerState\ITriggerState.cs" />
+    <Compile Include="Logic\Trigger\TriggerState\KeyboardTriggerState.cs" />
     <Compile Include="Logic\Ui\Common\LogWriter.cs" />
     <Compile Include="Logic\Ui\Window\MessageListener.cs" />
     <Compile Include="Logic\Ui\Window\OpenChildWindowMessage.cs" />

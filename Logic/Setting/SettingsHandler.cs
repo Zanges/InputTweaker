@@ -5,6 +5,7 @@ using InputInterceptorNS;
 using InputTweaker.Logic.Action;
 using InputTweaker.Logic.Enum;
 using InputTweaker.Logic.Trigger;
+using InputTweaker.Logic.Trigger.TriggerState;
 
 namespace InputTweaker.Logic.Setting
 {
@@ -16,11 +17,11 @@ namespace InputTweaker.Logic.Setting
         {
             Settings[SettingKey.LogUnrecognized] = false;
             
-            Settings[SettingKey.TriggerActionMap] = new Dictionary<TriggerType, Dictionary<System.Enum, Queue>>
+            Settings[SettingKey.TriggerActionMap] = new Dictionary<TriggerType, Dictionary<ITriggerState, Queue>>
             {
-                [TriggerType.Keyboard] = new Dictionary<System.Enum, Queue>
+                [TriggerType.Keyboard] = new Dictionary<ITriggerState, Queue>
                 {
-                    [KeyCode.W] = new Queue(new []
+                    [new KeyboardTriggerState(KeyCode.W, true)] = new Queue(new []
                     {
                         new LogMessageAction(),
                     }),

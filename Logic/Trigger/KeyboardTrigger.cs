@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using InputInterceptorNS;
 using InputTweaker.Logic.Action;
+using InputTweaker.Logic.Trigger.TriggerState;
 
 namespace InputTweaker.Logic.Trigger
 {
@@ -8,11 +9,11 @@ namespace InputTweaker.Logic.Trigger
     {
         private readonly KeyboardHook _hook;
         
-        public KeyboardTrigger(KeyCode keyCode, Queue actionQueue)
+        public KeyboardTrigger(KeyboardTriggerState triggerState, Queue actionQueue)
         {
             _hook = new KeyboardHook(KeyboardFilter.All, (ref KeyStroke keyStroke) =>
             {
-                if (keyStroke.Code == keyCode)
+                if (keyStroke.Code == triggerState.KeyCode && triggerState.MatchesPressed(keyStroke.State))
                 {
                     Queue newActionQueue = (Queue) actionQueue.Clone();
                     ActionBase firstAction = (ActionBase) newActionQueue.Dequeue();
