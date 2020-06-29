@@ -111,7 +111,6 @@
     <Compile Include="Logic\Initialisation\InputInterceptorWrapper.cs" />
     <Compile Include="Logic\Setting\SettingsHandler.cs" />
     <Compile Include="Logic\Trigger\KeyboardTrigger.cs" />
-    <Compile Include="Logic\Trigger\KeyboardTriggerOld.cs" />
     <Compile Include="Logic\Trigger\MouseTrigger.cs" />
     <Compile Include="Logic\Trigger\TriggerManager.cs" />
     <Compile Include="Logic\Trigger\TriggerState\ITriggerState.cs" />
