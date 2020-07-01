@@ -7,12 +7,19 @@ namespace InputTweaker.Logic.Action
     public class LogMessageAction : ActionBase
     {
         private static LogWriter _logWriter = new LogWriter("LogMessageAction");
-        
-        public override void Execute(Queue actionQueue, object input)
-        {
-            _logWriter.LogMessage("test", false);
 
-            base.Execute(actionQueue, input);
+        private string _message;
+
+        public LogMessageAction(ActionBase nextAction, string message) : base(nextAction)
+        {
+            _message = message;
+        }
+        
+        public override void Execute(object input)
+        {
+            _logWriter.LogMessage(_message, false);
+
+            base.Execute(input);
         }
     }
 }

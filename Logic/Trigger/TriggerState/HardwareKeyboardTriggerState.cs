@@ -1,5 +1,6 @@
 ﻿using InputInterceptorNS;
 using InputTweaker.Logic.Enum;
+using InputTweaker.Logic.Helper;
 
 namespace InputTweaker.Logic.Trigger.TriggerState
 {
@@ -23,10 +24,9 @@ namespace InputTweaker.Logic.Trigger.TriggerState
                 return true;
             }
 
-            bool stateEqualsPressed = keyState == KeyState.Down || keyState == KeyState.E0;
             bool triggerOnEqualsPressed = TriggerOn == TriggerOn.Down;
             
-            return triggerOnEqualsPressed == stateEqualsPressed;
+            return triggerOnEqualsPressed == KeyStateHelper.KeyStateToPressedBool(keyState);
         }
     }
 }

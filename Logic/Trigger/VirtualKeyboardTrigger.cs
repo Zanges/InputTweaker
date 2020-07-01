@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Diagnostics;
-using System.Runtime.InteropServices;
-using System.Threading;
-using System.Windows;
-using System.Windows.Forms;
-using System.Windows.Input;
 using InputTweaker.Logic.Action;
 using InputTweaker.Logic.Enum;
 using InputTweaker.Logic.Trigger.TriggerState;
@@ -17,12 +10,12 @@ namespace InputTweaker.Logic.Trigger
     public class VirtualKeyboardTrigger
     {
         private static readonly IKeyboardInterceptor Interceptor = new KeyboardInterceptor();
-        private static bool _initialized = false;
+        private static bool _initialized;
 
         private VirtualKeyboardTriggerState _triggerState;
-        private Queue _actionQueue;
+        private ActionBase _action;
 
-        public VirtualKeyboardTrigger(VirtualKeyboardTriggerState triggerState, Queue actionQueue)
+        public VirtualKeyboardTrigger(VirtualKeyboardTriggerState triggerState, ActionBase action)
         {
             if (!_initialized)
             {
@@ -31,35 +24,48 @@ namespace InputTweaker.Logic.Trigger
             }
             
             _triggerState = triggerState;
-            _actionQueue = actionQueue;
+            _action = action;
 
             switch (triggerState.TriggerOn)
             {
                 case TriggerOn.Both:
-                    Interceptor.KeyDown += Handle;
-                    Interceptor.KeyUp += Handle;
+                    Interceptor.KeyDown += HandleDown;
+                    Interceptor.KeyUp += HandleUp;
                     break;
                 case TriggerOn.Down:
-                    Interceptor.KeyDown += Handle;
+                    Interceptor.KeyDown += HandleDown;
                     break;
                 case TriggerOn.Up:
-                    Interceptor.KeyUp += Handle;
+                    Interceptor.KeyUp += HandleUp;
                     break;
+                case TriggerOn.None:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
         }
 
-        private void Handle(object sender, KeyEventArgs args)
+        private void HandleDown(object sender, KeyEventArgs args)
         {
             if (args.KeyCode == _triggerState.Key)
             {
                 args.SuppressKeyPress = _triggerState.Block;
                 
-                Queue newActionQueue = (Queue) _actionQueue.Clone();
-                ActionBase firstAction = (ActionBase) newActionQueue.Dequeue();
-
-                firstAction.Execute(newActionQueue, true);
+                _action.Execute(true);
             }
         }
+
+        private void HandleUp(object sender, KeyEventArgs args)
+        {
+            if (args.KeyCode == _triggerState.Key)
+            {
+                args.SuppressKeyPress = _triggerState.Block;
+                
+                _action.Execute(false);
+            }
+        }
+        
+        
         public void Cleanup()
         {
             if (_initialized)
@@ -71,15 +77,19 @@ namespace InputTweaker.Logic.Trigger
             switch (_triggerState.TriggerOn)
             {
                 case TriggerOn.Both:
-                    Interceptor.KeyDown -= Handle;
-                    Interceptor.KeyUp -= Handle;
+                    Interceptor.KeyDown -= HandleDown;
+                    Interceptor.KeyUp -= HandleUp;
                     break;
                 case TriggerOn.Down:
-                    Interceptor.KeyDown -= Handle;
+                    Interceptor.KeyDown -= HandleDown;
                     break;
                 case TriggerOn.Up:
-                    Interceptor.KeyUp -= Handle;
+                    Interceptor.KeyUp -= HandleUp;
                     break;
+                case TriggerOn.None:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
         }
     }

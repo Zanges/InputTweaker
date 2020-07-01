@@ -18,21 +18,17 @@ namespace InputTweaker.Logic.Setting
         {
             Settings[SettingKey.LogUnrecognized] = false;
             
-            Settings[SettingKey.TriggerActionMap] = new Dictionary<TriggerType, Dictionary<ITriggerState, Queue>>
+            Settings[SettingKey.TriggerActionMap] = new Dictionary<TriggerType, Dictionary<ITriggerState, ActionBase>>
             {
-                [TriggerType.HardwareKeyboard] = new Dictionary<ITriggerState, Queue>
+                [TriggerType.HardwareKeyboard] = new Dictionary<ITriggerState, ActionBase>
                 {
-                    [new HardwareKeyboardTriggerState(KeyCode.W, TriggerOn.Up, false)] = new Queue(new []
-                    {
-                        new LogMessageAction(),
-                    }),
+                    [new HardwareKeyboardTriggerState(KeyCode.W, TriggerOn.Both, false)] = 
+                        new LogMessageAction(null, "HardwareKeyboardTrigger")
                 },
-                [TriggerType.VirtualKeyboard] = new Dictionary<ITriggerState, Queue>
+                [TriggerType.VirtualKeyboard] = new Dictionary<ITriggerState, ActionBase>
                 {
-                    [new VirtualKeyboardTriggerState(Keys.W, TriggerOn.Up, false)] = new Queue(new []
-                    {
-                        new LogMessageAction(),
-                    }),
+                    [new VirtualKeyboardTriggerState(Keys.Q, TriggerOn.Both, false)] =
+                        new LogMessageAction(null, "VirtualKeyboardTrigger")
                 },
             };
         }

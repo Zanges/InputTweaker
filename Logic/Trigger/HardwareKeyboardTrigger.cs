@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using InputInterceptorNS;
 using InputTweaker.Logic.Action;
+using InputTweaker.Logic.Helper;
 using InputTweaker.Logic.Trigger.TriggerState;
 
 namespace InputTweaker.Logic.Trigger
@@ -8,8 +10,8 @@ namespace InputTweaker.Logic.Trigger
     public class HardwareKeyboardTrigger
     {
         private readonly KeyboardHook _hook;
-        
-        public HardwareKeyboardTrigger(HardwareKeyboardTriggerState triggerState, Queue actionQueue)
+
+        public HardwareKeyboardTrigger(HardwareKeyboardTriggerState triggerState, ActionBase action)
         {
             _hook = new KeyboardHook(KeyboardFilter.All, (ref KeyStroke keyStroke) =>
             {
@@ -20,10 +22,7 @@ namespace InputTweaker.Logic.Trigger
                         keyStroke =  new KeyStroke();
                     }
                     
-                    Queue newActionQueue = (Queue) actionQueue.Clone();
-                    ActionBase firstAction = (ActionBase) newActionQueue.Dequeue();
-                    
-                    firstAction.Execute(newActionQueue, true);
+                    action.Execute(KeyStateHelper.KeyStateToPressedBool(keyStroke.State));
                 }
             });
         }

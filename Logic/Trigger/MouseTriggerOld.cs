@@ -9,9 +9,9 @@ using InputTweaker.Logic.Ui.Common;
 
 namespace InputTweaker.Logic.Trigger
 {
-    public class MouseTrigger
+    public class MouseTriggerOld
     {
-        public static readonly MouseTrigger Instance = new MouseTrigger(); // Singleton
+        public static readonly MouseTriggerOld Instance = new MouseTriggerOld(); // Singleton
 
         private readonly LogWriter _logWriter = new LogWriter("Mouse Input");
         private MouseHook _mouseHookMove;
@@ -22,7 +22,7 @@ namespace InputTweaker.Logic.Trigger
         
         private Dictionary<MouseButton, Queue> _actionQueue = new Dictionary<MouseButton, Queue>();
 
-        private MouseTrigger()
+        private MouseTriggerOld()
         {
         }
         
@@ -58,7 +58,7 @@ namespace InputTweaker.Logic.Trigger
 
                             if (_actionQueue.ContainsKey(keyValuePair.Key))
                             {
-                                ((ActionBase)_actionQueue[keyValuePair.Key].Dequeue()).Execute(_actionQueue[keyValuePair.Key], keyValuePair.Key);
+                                //((ActionBase)_actionQueue[keyValuePair.Key].Dequeue()).Execute(_actionQueue[keyValuePair.Key], keyValuePair.Key);
                             }
                         }
                     }

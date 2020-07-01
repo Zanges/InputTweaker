@@ -19,25 +19,25 @@ namespace InputTweaker.Logic.Trigger
         {
             if (InputInterceptorWrapper.Instance.Initialize())
             {
-                Dictionary<TriggerType, Dictionary<ITriggerState, Queue>> triggerToActionMap =
-                    (Dictionary<TriggerType, Dictionary<ITriggerState, Queue>>)
+                Dictionary<TriggerType, Dictionary<ITriggerState, ActionBase>> triggerToActionMap =
+                    (Dictionary<TriggerType, Dictionary<ITriggerState, ActionBase>>)
                     SettingsHandler.GetSetting(SettingKey.TriggerActionMap);
 
-                foreach (KeyValuePair<TriggerType, Dictionary<ITriggerState, Queue>> triggerTypeSet in triggerToActionMap)
+                foreach (KeyValuePair<TriggerType, Dictionary<ITriggerState, ActionBase>> triggerTypeSet in triggerToActionMap)
                 {
-                    Dictionary<ITriggerState, Queue> triggerStateToActionQueueMap = triggerTypeSet.Value;
+                    Dictionary<ITriggerState, ActionBase> triggerStateToActionQueueMap = triggerTypeSet.Value;
                     
                     switch (triggerTypeSet.Key)
                     {
                         case TriggerType.HardwareKeyboard:
-                            foreach (KeyValuePair<ITriggerState,Queue> triggerStateToActionSet in triggerStateToActionQueueMap)
+                            foreach (KeyValuePair<ITriggerState, ActionBase> triggerStateToActionSet in triggerStateToActionQueueMap)
                             {
                                 HardwareKeyboardTriggers.Add(new HardwareKeyboardTrigger((HardwareKeyboardTriggerState) triggerStateToActionSet.Key, triggerStateToActionSet.Value));
                             }
                             break;
                         
                         case TriggerType.VirtualKeyboard:
-                            foreach (KeyValuePair<ITriggerState,Queue> triggerStateToActionSet in triggerStateToActionQueueMap)
+                            foreach (KeyValuePair<ITriggerState, ActionBase> triggerStateToActionSet in triggerStateToActionQueueMap)
                             {
                                 VirtualKeyboardTriggers.Add(new VirtualKeyboardTrigger((VirtualKeyboardTriggerState) triggerStateToActionSet.Key, triggerStateToActionSet.Value));
                             }

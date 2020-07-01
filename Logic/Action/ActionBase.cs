@@ -6,15 +6,22 @@ namespace InputTweaker.Logic.Action
 {
     public class ActionBase
     {
-        public virtual void Execute(Queue actionQueue, object input)
-        {
-            Console.WriteLine(actionQueue.Count);
-            if (actionQueue.Count > 0)
-            {
-                ActionBase nextAction = (ActionBase) actionQueue.Dequeue();
-                nextAction.Execute(actionQueue, input);
-            }
+        private ActionBase _nextAction;
 
+        public ActionBase(ActionBase nextAction)
+        {
+            _nextAction = nextAction;
+        }
+
+        public virtual void Execute(object input)
+        {
+            _nextAction?.Execute(input);
+
+        }
+
+        public bool HasNextAction()
+        {
+            return _nextAction != null;
         }
     }
 }
