@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Input;
 using InputTweaker.Logic.Action;
+using InputTweaker.Logic.Enum;
 using InputTweaker.Logic.Trigger.TriggerState;
 using Open.WinKeyboardHook;
 using KeyEventArgs = System.Windows.Forms.KeyEventArgs;
@@ -18,7 +19,7 @@ namespace InputTweaker.Logic.Trigger
         private static readonly IKeyboardInterceptor Interceptor = new KeyboardInterceptor();
         private static bool _initialized = false;
 
-            private VirtualKeyboardTriggerState _triggerState;
+        private VirtualKeyboardTriggerState _triggerState;
         private Queue _actionQueue;
 
         public VirtualKeyboardTrigger(VirtualKeyboardTriggerState triggerState, Queue actionQueue)
@@ -32,13 +33,18 @@ namespace InputTweaker.Logic.Trigger
             _triggerState = triggerState;
             _actionQueue = actionQueue;
 
-            if (triggerState.Pressed)
+            switch (triggerState.TriggerOn)
             {
-                Interceptor.KeyDown += Handle;
-            }
-            else
-            {
-                Interceptor.KeyUp += Handle;
+                case TriggerOn.Both:
+                    Interceptor.KeyDown += Handle;
+                    Interceptor.KeyUp += Handle;
+                    break;
+                case TriggerOn.Down:
+                    Interceptor.KeyDown += Handle;
+                    break;
+                case TriggerOn.Up:
+                    Interceptor.KeyUp += Handle;
+                    break;
             }
         }
 
@@ -62,13 +68,18 @@ namespace InputTweaker.Logic.Trigger
                 _initialized = false;
             }
             
-            if (_triggerState.Pressed)
+            switch (_triggerState.TriggerOn)
             {
-                Interceptor.KeyDown -= Handle;
-            }
-            else
-            {
-                Interceptor.KeyUp -= Handle;
+                case TriggerOn.Both:
+                    Interceptor.KeyDown -= Handle;
+                    Interceptor.KeyUp -= Handle;
+                    break;
+                case TriggerOn.Down:
+                    Interceptor.KeyDown -= Handle;
+                    break;
+                case TriggerOn.Up:
+                    Interceptor.KeyUp -= Handle;
+                    break;
             }
         }
     }

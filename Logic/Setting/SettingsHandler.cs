@@ -22,14 +22,14 @@ namespace InputTweaker.Logic.Setting
             {
                 [TriggerType.HardwareKeyboard] = new Dictionary<ITriggerState, Queue>
                 {
-                    [new HardwareKeyboardTriggerState(KeyCode.W, true, false)] = new Queue(new []
+                    [new HardwareKeyboardTriggerState(KeyCode.W, TriggerOn.Up, false)] = new Queue(new []
                     {
                         new LogMessageAction(),
                     }),
                 },
                 [TriggerType.VirtualKeyboard] = new Dictionary<ITriggerState, Queue>
                 {
-                    [new VirtualKeyboardTriggerState(Keys.W, true, false)] = new Queue(new []
+                    [new VirtualKeyboardTriggerState(Keys.W, TriggerOn.Up, false)] = new Queue(new []
                     {
                         new LogMessageAction(),
                     }),

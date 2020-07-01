@@ -112,6 +112,7 @@
     <Compile Include="Logic\Enum\JoystickAction.cs" />
     <Compile Include="Logic\Enum\MouseAction.cs" />
     <Compile Include="Logic\Enum\SettingKey.cs" />
+    <Compile Include="Logic\Enum\TriggerOn.cs" />
     <Compile Include="Logic\Enum\TriggerType.cs" />
     <Compile Include="Logic\Initialisation\InputInterceptorWrapper.cs" />
     <Compile Include="Logic\Setting\SettingsHandler.cs" />
@@ -121,6 +122,8 @@
     <Compile Include="Logic\Trigger\TriggerState\ITriggerState.cs" />
     <Compile Include="Logic\Trigger\TriggerState\HardwareKeyboardTriggerState.cs" />
     <Compile Include="Logic\Trigger\TriggerState\VirtualKeyboardTriggerState.cs" />
+    <Compile Include="Logic\Trigger\TriggerToActionSet\HardwareKeyboardTriggerActionSet.cs" />
+    <Compile Include="Logic\Trigger\TriggerToActionSet\VirtualKeyboardTriggerActionSet.cs" />
     <Compile Include="Logic\Trigger\VirtualKeyboardTrigger.cs" />
     <Compile Include="Logic\Ui\Common\LogWriter.cs" />
     <Compile Include="Logic\Ui\Window\MessageListener.cs" />
