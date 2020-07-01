@@ -20,12 +20,21 @@ namespace InputTweaker.Logic.Setting
                 [TriggerType.HardwareKeyboard] = new Dictionary<ITriggerState, ActionBase>
                 {
                     [new HardwareKeyboardTriggerState(KeyCode.W, TriggerOn.Both, false)] = 
-                        new LogMessageAction(null, "HardwareKeyboardTrigger")
+                        new LogMessageAction("HardwareKeyboardTrigger")
                 },
                 [TriggerType.VirtualKeyboard] = new Dictionary<ITriggerState, ActionBase>
                 {
                     [new VirtualKeyboardTriggerState(Keys.Q, TriggerOn.Both, false)] =
-                        new LogMessageAction(null, "VirtualKeyboardTrigger")
+                        new BranchAction(new List<ActionBase>
+                        {
+                            new LogMessageAction("branch 1"),
+                            new LogMessageAction("branch 2", 
+                                new BoolDecisionsAction(
+                                    new LogMessageAction("true"), 
+                                    new LogMessageAction("false")
+                                    )
+                                ),
+                        })
                 },
             };
         }

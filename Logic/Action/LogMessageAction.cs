@@ -4,11 +4,11 @@ namespace InputTweaker.Logic.Action
 {
     public class LogMessageAction : ActionBase
     {
-        private static LogWriter _logWriter = new LogWriter("LogMessageAction");
+        private static readonly LogWriter _logWriter = new LogWriter("LogMessageAction");
 
-        private string _message;
+        private readonly string _message;
 
-        public LogMessageAction(ActionBase nextAction, string message) : base(nextAction)
+        public LogMessageAction(string message, ActionBase nextAction = null) : base(nextAction)
         {
             _message = message;
         }
