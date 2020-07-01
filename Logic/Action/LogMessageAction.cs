@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using InputTweaker.Logic.Ui.Common;
+﻿using InputTweaker.Logic.Ui.Common;
 
 namespace InputTweaker.Logic.Action
 {

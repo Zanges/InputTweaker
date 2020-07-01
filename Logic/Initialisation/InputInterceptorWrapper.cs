@@ -1,5 +1,4 @@
-﻿using GalaSoft.MvvmLight.Command;
-using GalaSoft.MvvmLight.Messaging;
+﻿using GalaSoft.MvvmLight.Messaging;
 using InputInterceptorNS;
 using InputTweaker.Logic.Ui.Window;
 
@@ -9,7 +8,7 @@ namespace InputTweaker.Logic.Initialisation
     {
         public static readonly InputInterceptorWrapper Instance = new InputInterceptorWrapper(); // Singleton
 
-        private bool _isReady = false;
+        private bool _isReady;
 
         private InputInterceptorWrapper()
         {

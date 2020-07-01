@@ -179,7 +179,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="CustomControl\ResourceDictionary.xaml" />
     <Page Include="DefaultStyle.xaml" />
     <Page Include="View\ChildWindow.xaml" />
     <Page Include="View\Generic\MessageWindow.xaml" />

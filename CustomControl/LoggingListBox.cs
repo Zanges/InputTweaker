@@ -2,7 +2,6 @@
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Windows;
-using System.Windows.Automation.Peers;
 using System.Windows.Controls;
 using System.Windows.Media;
 
@@ -116,7 +115,6 @@ namespace InputTweaker.CustomControl
                 var result = GetScrollViewer(child);
                 if (result == null)
                 {
-                    continue;
                 }
                 else
                 {

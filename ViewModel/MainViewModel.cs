@@ -2,14 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Reflection;
 using System.Threading;
 using System.Windows.Data;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
-using InputTweaker.Logic.Ui;
-using InputTweaker.Logic.Ui.Common;
 using InputTweaker.Logic.Ui.Window;
 
 namespace InputTweaker.ViewModel

@@ -1,11 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Windows.Forms;
-using System.Windows.Input;
 using InputInterceptorNS;
 using InputTweaker.Logic.Action;
 using InputTweaker.Logic.Enum;
-using InputTweaker.Logic.Trigger;
 using InputTweaker.Logic.Trigger.TriggerState;
 
 namespace InputTweaker.Logic.Setting

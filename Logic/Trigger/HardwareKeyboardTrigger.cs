@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using InputInterceptorNS;
+﻿using InputInterceptorNS;
 using InputTweaker.Logic.Action;
 using InputTweaker.Logic.Helper;
 using InputTweaker.Logic.Trigger.TriggerState;

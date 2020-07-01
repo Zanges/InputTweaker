@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
 using System.Linq;
 using System.Runtime.InteropServices;
-using System.Threading.Tasks;
 using System.Windows;
-using InputTweaker.Logic.Initialisation;
 using InputTweaker.Logic.Setting;
 using InputTweaker.Logic.Trigger;
 using InputTweaker.View;
@@ -16,7 +11,7 @@ namespace InputTweaker
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
-    public partial class App : Application
+    public partial class App
     {
         [DllImport("kernel32.dll")]
         private static extern IntPtr GetConsoleWindow();

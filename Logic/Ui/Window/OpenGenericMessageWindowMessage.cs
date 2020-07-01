@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace InputTweaker.Logic.Ui.Window
+﻿namespace InputTweaker.Logic.Ui.Window
 {
     public class OpenGenericMessageWindowMessage
     {

@@ -1,5 +1,4 @@
 ﻿using System.Windows.Forms;
-using System.Windows.Input;
 using InputTweaker.Logic.Enum;
 
 namespace InputTweaker.Logic.Trigger.TriggerState

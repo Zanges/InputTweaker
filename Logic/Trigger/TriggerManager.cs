@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using InputInterceptorNS;
 using InputTweaker.Logic.Action;
 using InputTweaker.Logic.Enum;
 using InputTweaker.Logic.Initialisation;

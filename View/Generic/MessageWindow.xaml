@@ -10,7 +10,7 @@
         MinWidth="200"
         >
     <Grid>
-        <Button x:Name="btnDismiss" IsDefault="True" Content="Ok" Command="{Binding CloseWindowCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}}" Width="100" Height="22" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0, 0, 0, 4"/>
+        <Button x:Name="BtnDismiss" IsDefault="True" Content="Ok" Command="{Binding CloseWindowCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}}" Width="100" Height="22" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0, 0, 0, 4"/>
         <Label HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0, 4, 0, 0" Content="{Binding Text}"/>
     </Grid>
 </Window>
