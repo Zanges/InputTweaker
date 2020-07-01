@@ -109,6 +109,7 @@
     <Compile Include="Logic\Action\ActionBase.cs" />
     <Compile Include="Logic\Action\BranchAction.cs" />
     <Compile Include="Logic\Action\BoolDecisionsAction.cs" />
+    <Compile Include="Logic\Action\LogInputAction.cs" />
     <Compile Include="Logic\Action\LogMessageAction.cs" />
     <Compile Include="Logic\Enum\ActionType.cs" />
     <Compile Include="Logic\Enum\JoystickAction.cs" />

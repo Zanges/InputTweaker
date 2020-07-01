@@ -27,7 +27,7 @@ namespace InputTweaker.Logic.Setting
                     [new VirtualKeyboardTriggerState(Keys.Q, TriggerOn.Both, false)] =
                         new BranchAction(new List<ActionBase>
                         {
-                            new LogMessageAction("branch 1"),
+                            new LogInputAction(),
                             new LogMessageAction("branch 2", 
                                 new BoolDecisionsAction(
                                     new LogMessageAction("true"), 
