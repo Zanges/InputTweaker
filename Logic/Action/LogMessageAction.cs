@@ -4,7 +4,7 @@ namespace InputTweaker.Logic.Action
 {
     public class LogMessageAction : ActionBase
     {
-        private static readonly LogWriter _logWriter = new LogWriter("LogMessageAction");
+        private static readonly LogWriter LogWriter = new LogWriter("LogMessageAction");
 
         private readonly string _message;
 
@@ -15,7 +15,7 @@ namespace InputTweaker.Logic.Action
         
         public override void Execute(object input)
         {
-            _logWriter.LogMessage(_message, false);
+            LogWriter.LogMessage(_message, false);
 
             base.Execute(input);
         }

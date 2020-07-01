@@ -5,7 +5,7 @@ namespace InputTweaker.Logic.Action
 {
     public class LogInputAction : ActionBase
     {
-        private static readonly LogWriter _logWriter = new LogWriter("LogInputAction");
+        private static readonly LogWriter LogWriter = new LogWriter("LogInputAction");
 
         public LogInputAction(ActionBase nextAction = null) : base(nextAction)
         {
@@ -15,11 +15,11 @@ namespace InputTweaker.Logic.Action
         {
             if (input is bool inputBool)
             {
-                _logWriter.LogMessage(inputBool ? "Down" : "Up", false);
+                LogWriter.LogMessage(inputBool ? "Down" : "Up", false);
             }
             else
             {
-                _logWriter.LogMessage(input.ToString(), false);
+                LogWriter.LogMessage(input.ToString(), false);
             }
 
             base.Execute(input);
