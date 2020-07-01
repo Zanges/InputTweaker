@@ -2,9 +2,9 @@
 {
     public class ActionBase
     {
-        private ActionBase _nextAction;
+        private readonly ActionBase _nextAction;
 
-        public ActionBase(ActionBase nextAction)
+        public ActionBase(ActionBase nextAction = null)
         {
             _nextAction = nextAction;
         }
