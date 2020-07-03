@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Forms;
+using System.Windows.Input;
 using InputInterceptorNS;
 using InputTweaker.Logic.Action;
 using InputTweaker.Logic.Enum;
@@ -36,6 +37,16 @@ namespace InputTweaker.Logic.Setting
                                 ),
                         })
                 },
+                [TriggerType.MouseButton] = new Dictionary<ITriggerState, ActionBase>
+                {
+                    [new MouseButtonTriggerState(MouseButton.Left, TriggerOn.Both, true)] = 
+                        new LogInputAction()
+                },
+                [TriggerType.MouseScroll] = new Dictionary<ITriggerState, ActionBase>
+                {
+                    [new MouseScrollTriggerState(MouseScroll.Vertical, TriggerOn.Both, false)] = 
+                        new LogInputAction()
+                }
             };
         }
 

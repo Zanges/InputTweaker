@@ -1,5 +1,8 @@
-﻿using GalaSoft.MvvmLight.Messaging;
+﻿using System;
+using System.Windows.Input;
+using GalaSoft.MvvmLight.Messaging;
 using InputInterceptorNS;
+using InputTweaker.Logic.Helper;
 using InputTweaker.Logic.Ui.Window;
 
 namespace InputTweaker.Logic.Initialisation
@@ -24,7 +27,7 @@ namespace InputTweaker.Logic.Initialisation
                     _isReady = true;
                 }
             }
-            
+
             return _isReady;
         }
 

@@ -12,6 +12,8 @@ namespace InputTweaker.Logic.Trigger
     {
         private static readonly List<HardwareKeyboardTrigger> HardwareKeyboardTriggers = new List<HardwareKeyboardTrigger>();
         private static readonly List<VirtualKeyboardTrigger> VirtualKeyboardTriggers = new List<VirtualKeyboardTrigger>();
+        private static readonly List<MouseButtonTrigger> MouseButtonTriggers = new List<MouseButtonTrigger>();
+        private static readonly List<MouseScrollTrigger> MouseScrollTriggers = new List<MouseScrollTrigger>();
 
         public static void Initialize()
         {
@@ -39,11 +41,21 @@ namespace InputTweaker.Logic.Trigger
                             {
                                 VirtualKeyboardTriggers.Add(new VirtualKeyboardTrigger((VirtualKeyboardTriggerState) triggerStateToActionSet.Key, triggerStateToActionSet.Value));
                             }
-
                             break;
                             
-                        case TriggerType.Mouse:
-                            throw new NotImplementedException();
+                        case TriggerType.MouseButton:
+                            foreach (KeyValuePair<ITriggerState, ActionBase> triggerStateToActionSet in triggerStateToActionQueueMap)
+                            {
+                                MouseButtonTriggers.Add(new MouseButtonTrigger((MouseButtonTriggerState) triggerStateToActionSet.Key, triggerStateToActionSet.Value));
+                            }
+                            break;
+                        
+                        case TriggerType.MouseScroll:
+                            foreach (KeyValuePair<ITriggerState, ActionBase> triggerStateToActionSet in triggerStateToActionQueueMap)
+                            {
+                                MouseScrollTriggers.Add(new MouseScrollTrigger((MouseScrollTriggerState) triggerStateToActionSet.Key, triggerStateToActionSet.Value));
+                            }
+                            break;
 
                         case TriggerType.Serial:
                             throw new NotImplementedException();
@@ -73,6 +85,18 @@ namespace InputTweaker.Logic.Trigger
                     virtualKeyboardTrigger.Cleanup();
                 }
                 VirtualKeyboardTriggers.Clear();
+                
+                foreach (MouseButtonTrigger mouseButtonTrigger in MouseButtonTriggers)
+                {
+                    mouseButtonTrigger.Cleanup();
+                }
+                MouseButtonTriggers.Clear();
+                
+                foreach (MouseScrollTrigger mouseScrollTrigger in MouseScrollTriggers)
+                {
+                    mouseScrollTrigger.Cleanup();
+                }
+                MouseScrollTriggers.Clear();
             }
         }
 

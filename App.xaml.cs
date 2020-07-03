@@ -48,7 +48,6 @@ namespace InputTweaker
 
         void App_Exit(object sender, ExitEventArgs exitEventArgs)
         {
-            //TriggerInitialisation.Instance.Cleanup();
             TriggerManager.Cleanup();
         }
     }

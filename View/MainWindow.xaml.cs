@@ -1,4 +1,7 @@
-﻿namespace InputTweaker.View
+﻿using System;
+using InputTweaker.Logic.Trigger;
+
+namespace InputTweaker.View
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

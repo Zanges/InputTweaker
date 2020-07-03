@@ -5,7 +5,9 @@
         None,
         HardwareKeyboard,
         VirtualKeyboard,
-        Mouse,
+        MouseButton,
+        MouseScroll,
+        MouseMove,
         Serial,
     }
 }
