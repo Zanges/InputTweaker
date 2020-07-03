@@ -15,12 +15,10 @@ namespace InputTweaker.Logic.Trigger
             {
                 if (keyStroke.Code == triggerState.KeyCode && triggerState.MatchesPressed(keyStroke.State))
                 {
-                    if (triggerState.Block)
+                    if (action.Execute(KeyStateHelper.KeyStateToPressedBool(keyStroke.State)))
                     {
                         keyStroke =  new KeyStroke();
                     }
-                    
-                    action.Execute(KeyStateHelper.KeyStateToPressedBool(keyStroke.State));
                 }
             });
         }

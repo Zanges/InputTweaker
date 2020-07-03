@@ -13,11 +13,11 @@ namespace InputTweaker.Logic.Action
             _message = message;
         }
         
-        public override void Execute(object input)
+        public override bool Execute(object input)
         {
             LogWriter.LogMessage(_message, false);
 
-            base.Execute(input);
+            return base.Execute(input);
         }
     }
 }

@@ -13,19 +13,14 @@
             _keepInput = keepInput;
         }
 
-        public override void Execute(object input)
+        public override bool Execute(object input)
         {
             if (input is bool boolInput)
             {
-                if (boolInput)
-                {
-                    _actionTrue.Execute(_keepInput ? input : true);
-                }
-                else
-                {
-                    _actionFalse.Execute(_keepInput ? input : true);
-                }
+                return boolInput ? _actionTrue.Execute(_keepInput ? input : true) : _actionFalse.Execute(_keepInput ? input : true);
             }
+
+            return false;
         }
     }
 }

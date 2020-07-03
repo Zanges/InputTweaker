@@ -9,9 +9,9 @@
             _nextAction = nextAction;
         }
 
-        public virtual void Execute(object input)
+        public virtual bool Execute(object input)
         {
-            _nextAction?.Execute(input);
+            return HasNextAction() && _nextAction.Execute(input);
         }
 
         public bool HasNextAction()

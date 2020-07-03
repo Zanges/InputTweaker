@@ -49,9 +49,7 @@ namespace InputTweaker.Logic.Trigger
         {
             if (args.KeyCode == _triggerState.Key)
             {
-                args.SuppressKeyPress = _triggerState.Block;
-                
-                _action.Execute(true);
+                args.SuppressKeyPress = _action.Execute(true);
             }
         }
 
@@ -59,9 +57,7 @@ namespace InputTweaker.Logic.Trigger
         {
             if (args.KeyCode == _triggerState.Key)
             {
-                args.SuppressKeyPress = _triggerState.Block;
-                
-                _action.Execute(false);
+                args.SuppressKeyPress = _action.Execute(false);
             }
         }
         

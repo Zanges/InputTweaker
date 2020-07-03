@@ -11,7 +11,7 @@ namespace InputTweaker.Logic.Action
         {
         }
 
-        public override void Execute(object input)
+        public override bool Execute(object input)
         {
             if (input is bool inputBool)
             {
@@ -22,7 +22,7 @@ namespace InputTweaker.Logic.Action
                 LogWriter.LogMessage(input.ToString(), false);
             }
 
-            base.Execute(input);
+            return base.Execute(input);
         }
     }
 }

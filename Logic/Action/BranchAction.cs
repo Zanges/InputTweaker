@@ -11,12 +11,18 @@ namespace InputTweaker.Logic.Action
             _actions = actions;
         }
         
-        public override void Execute(object input)
+        public override bool Execute(object input)
         {
+            bool block = false;
             foreach (ActionBase action in _actions)
             {
-                action.Execute(input);
+                if (action.Execute(input))
+                {
+                    block = true;
+                }
             }
+
+            return block;
         }
     }
 }

@@ -32,9 +32,7 @@ namespace InputTweaker.Logic.Trigger
                         }
                     }
                     
-                    action.Execute(mouseStroke.Rolling);
-
-                    if (triggerState.Block)
+                    if (action.Execute(mouseStroke.Rolling))
                     {
                         mouseStroke = new MouseStroke();
                     }

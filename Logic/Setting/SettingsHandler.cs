@@ -20,32 +20,23 @@ namespace InputTweaker.Logic.Setting
             {
                 [TriggerType.HardwareKeyboard] = new Dictionary<ITriggerState, ActionBase>
                 {
-                    [new HardwareKeyboardTriggerState(KeyCode.W, TriggerOn.Both, false)] = 
+                    [new HardwareKeyboardTriggerState(KeyCode.W, TriggerOn.Both)] = 
                         new LogMessageAction("HardwareKeyboardTrigger")
                 },
                 [TriggerType.VirtualKeyboard] = new Dictionary<ITriggerState, ActionBase>
                 {
-                    [new VirtualKeyboardTriggerState(Keys.Q, TriggerOn.Both, false)] =
-                        new BranchAction(new List<ActionBase>
-                        {
-                            new LogInputAction(),
-                            new LogMessageAction("branch 2", 
-                                new BoolDecisionsAction(
-                                    new LogMessageAction("true"), 
-                                    new LogMessageAction("false")
-                                    )
-                                ),
-                        })
+                    [new VirtualKeyboardTriggerState(Keys.Q, TriggerOn.Down)] =
+                        new LogMessageAction("q")
                 },
                 [TriggerType.MouseButton] = new Dictionary<ITriggerState, ActionBase>
                 {
-                    [new MouseButtonTriggerState(MouseButton.Left, TriggerOn.Both, true)] = 
+                    [new MouseButtonTriggerState(MouseButton.Right, TriggerOn.Both)] = 
                         new LogInputAction()
                 },
                 [TriggerType.MouseScroll] = new Dictionary<ITriggerState, ActionBase>
                 {
-                    [new MouseScrollTriggerState(MouseScroll.Vertical, TriggerOn.Both, false)] = 
-                        new LogInputAction()
+                    [new MouseScrollTriggerState(MouseScroll.Vertical, TriggerOn.Both)] = 
+                        new BlockInputAction(new LogInputAction())
                 }
             };
         }

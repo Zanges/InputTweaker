@@ -47,9 +47,7 @@ namespace InputTweaker.Logic.Trigger
             
             _hook = new MouseHook(filter, (ref MouseStroke mouseStroke) =>
             {
-                action.Execute(MouseButtonHelper.IsButtonDown(mouseStroke.State));
-
-                if (triggerState.Block)
+                if (action.Execute(MouseButtonHelper.IsButtonDown(mouseStroke.State)))
                 {
                     mouseStroke = new MouseStroke();
                 }

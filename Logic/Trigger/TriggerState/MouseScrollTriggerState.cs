@@ -6,13 +6,11 @@ namespace InputTweaker.Logic.Trigger.TriggerState
     {
         public MouseScroll Axis { get; private set; }
         public TriggerOn TriggerOn { get; private set; }
-        public bool Block { get; private set; }
 
-        public MouseScrollTriggerState(MouseScroll axis, TriggerOn triggerOn, bool block)
+        public MouseScrollTriggerState(MouseScroll axis, TriggerOn triggerOn)
         {
             Axis = axis;
             TriggerOn = triggerOn;
-            Block = block;
         }
     }
 }

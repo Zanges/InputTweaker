@@ -107,6 +107,7 @@
     </Compile>
     <Compile Include="CustomControl\LoggingListBox.cs" />
     <Compile Include="Logic\Action\ActionBase.cs" />
+    <Compile Include="Logic\Action\BlockInputAction.cs" />
     <Compile Include="Logic\Action\BranchAction.cs" />
     <Compile Include="Logic\Action\BoolDecisionsAction.cs" />
     <Compile Include="Logic\Action\LogInputAction.cs" />

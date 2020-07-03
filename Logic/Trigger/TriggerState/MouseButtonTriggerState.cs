@@ -10,13 +10,11 @@ namespace InputTweaker.Logic.Trigger.TriggerState
     {
         public MouseButton Button { get; private set; }
         public TriggerOn TriggerOn { get; private set; }
-        public bool Block { get; private set; }
         
-        public MouseButtonTriggerState(MouseButton button, TriggerOn triggerOn, bool block)
+        public MouseButtonTriggerState(MouseButton button, TriggerOn triggerOn)
         {
             Button = button;
             TriggerOn = triggerOn;
-            Block = block;
         }
 
         public bool Match(MouseState mouseState)

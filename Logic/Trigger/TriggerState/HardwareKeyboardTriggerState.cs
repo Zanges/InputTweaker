@@ -8,13 +8,11 @@ namespace InputTweaker.Logic.Trigger.TriggerState
     {
         public KeyCode KeyCode { get; private set; }
         public TriggerOn TriggerOn { get; private set; }
-        public bool Block { get; private set; }
 
-        public HardwareKeyboardTriggerState(KeyCode keyCode, TriggerOn triggerOn, bool block)
+        public HardwareKeyboardTriggerState(KeyCode keyCode, TriggerOn triggerOn)
         {
             KeyCode = keyCode;
             TriggerOn = triggerOn;
-            Block = block;
         }
 
         public bool MatchesPressed(KeyState keyState)
