@@ -36,7 +36,18 @@ namespace InputTweaker.Logic.Setting
                 [TriggerType.MouseScroll] = new Dictionary<ITriggerState, ActionBase>
                 {
                     [new MouseScrollTriggerState(MouseScroll.Vertical, TriggerOn.Both)] = 
-                        new BlockInputAction(new LogInputAction())
+                        new BlockInputAction(new DeltaDecisionAction(
+                            new LogMessageAction("up"), 
+                            new LogMessageAction("down")
+                            ))
+                },
+                [TriggerType.MouseMove] = new Dictionary<ITriggerState, ActionBase>
+                {
+                    [new MouseMoveTriggerState(MouseAxis.X, TriggerOn.Both)] = 
+                        new DeltaDecisionAction(
+                            new ActionBase(),
+                            new ActionBase()
+                            )
                 }
             };
         }

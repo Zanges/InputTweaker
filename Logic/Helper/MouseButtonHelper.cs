@@ -16,6 +16,11 @@ namespace InputTweaker.Logic.Helper
         {
             return scroll < 0;
         }
+        
+        public static bool IsMoveDown(int movement)
+        {
+            return movement < 0;
+        }
 
         public static bool ParseMouseStateToMouseButton(MouseState mouseState, out MouseButton mouseButton)
         {
@@ -104,6 +109,5 @@ namespace InputTweaker.Logic.Helper
                     throw new ArgumentOutOfRangeException(nameof(mouseScroll), mouseScroll, null);
             }
         }
-
     }
 }

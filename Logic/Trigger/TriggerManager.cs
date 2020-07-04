@@ -14,6 +14,7 @@ namespace InputTweaker.Logic.Trigger
         private static readonly List<VirtualKeyboardTrigger> VirtualKeyboardTriggers = new List<VirtualKeyboardTrigger>();
         private static readonly List<MouseButtonTrigger> MouseButtonTriggers = new List<MouseButtonTrigger>();
         private static readonly List<MouseScrollTrigger> MouseScrollTriggers = new List<MouseScrollTrigger>();
+        private static readonly List<MouseMoveTrigger> mouseMoveTriggers = new List<MouseMoveTrigger>();
 
         public static void Initialize()
         {
@@ -54,6 +55,13 @@ namespace InputTweaker.Logic.Trigger
                             foreach (KeyValuePair<ITriggerState, ActionBase> triggerStateToActionSet in triggerStateToActionQueueMap)
                             {
                                 MouseScrollTriggers.Add(new MouseScrollTrigger((MouseScrollTriggerState) triggerStateToActionSet.Key, triggerStateToActionSet.Value));
+                            }
+                            break;
+                        
+                        case TriggerType.MouseMove:
+                            foreach (KeyValuePair<ITriggerState, ActionBase> triggerStateToActionSet in triggerStateToActionQueueMap)
+                            {
+                                mouseMoveTriggers.Add(new MouseMoveTrigger((MouseMoveTriggerState) triggerStateToActionSet.Key, triggerStateToActionSet.Value));
                             }
                             break;
 
@@ -97,6 +105,12 @@ namespace InputTweaker.Logic.Trigger
                     mouseScrollTrigger.Cleanup();
                 }
                 MouseScrollTriggers.Clear();
+                
+                foreach (MouseMoveTrigger mouseMoveTrigger in mouseMoveTriggers)
+                {
+                    mouseMoveTrigger.Cleanup();
+                }
+                mouseMoveTriggers.Clear();
             }
         }
 
