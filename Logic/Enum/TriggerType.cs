@@ -8,6 +8,7 @@
         MouseButton,
         MouseScroll,
         MouseMove,
+        Timer,
         Serial,
     }
 }

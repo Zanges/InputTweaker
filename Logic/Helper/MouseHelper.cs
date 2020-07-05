@@ -5,7 +5,7 @@ using InputTweaker.Logic.Enum;
 
 namespace InputTweaker.Logic.Helper
 {
-    public static class MouseButtonHelper
+    public static class MouseHelper
     {
         public static bool IsButtonDown(MouseState mouseState)
         {

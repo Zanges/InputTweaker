@@ -13,7 +13,7 @@ namespace InputTweaker.Logic.Trigger
 
         public MouseScrollTrigger(MouseScrollTriggerState triggerState, ActionBase action)
         {
-            if (MouseButtonHelper.ParseMouseScrollToMouseFilter(triggerState.Axis, out MouseFilter filter))
+            if (MouseHelper.ParseMouseScrollToMouseFilter(triggerState.Axis, out MouseFilter filter))
             {
                 _hook = new MouseHook(filter, (ref MouseStroke mouseStroke) =>
                 {
@@ -21,12 +21,12 @@ namespace InputTweaker.Logic.Trigger
                     {
                         if (triggerState.TriggerOn == TriggerOn.Down)
                         {
-                            if (!MouseButtonHelper.IsScrollDown(mouseStroke.Rolling))
+                            if (!MouseHelper.IsScrollDown(mouseStroke.Rolling))
                             {
                                 return;
                             }
                         }
-                        else if (MouseButtonHelper.IsScrollDown(mouseStroke.Rolling))
+                        else if (MouseHelper.IsScrollDown(mouseStroke.Rolling))
                         {
                             return;
                         }

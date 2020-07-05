@@ -34,12 +34,12 @@ namespace InputTweaker.Logic.Trigger
                     {
                         if (triggerState.TriggerOn == TriggerOn.Down)
                         {
-                            if (!MouseButtonHelper.IsMoveDown(delta))
+                            if (!MouseHelper.IsMoveDown(delta))
                             {
                                 return;
                             }
                         }
-                        else if (MouseButtonHelper.IsMoveDown(delta))
+                        else if (MouseHelper.IsMoveDown(delta))
                         {
                             return;
                         }

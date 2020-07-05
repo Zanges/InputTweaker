@@ -121,8 +121,9 @@
     <Compile Include="Logic\Enum\SettingKey.cs" />
     <Compile Include="Logic\Enum\TriggerOn.cs" />
     <Compile Include="Logic\Enum\TriggerType.cs" />
+    <Compile Include="Logic\Helper\ActionHelper.cs" />
     <Compile Include="Logic\Helper\KeyStateHelper.cs" />
-    <Compile Include="Logic\Helper\MouseButtonHelper.cs" />
+    <Compile Include="Logic\Helper\MouseHelper.cs" />
     <Compile Include="Logic\Initialisation\InputInterceptorWrapper.cs" />
     <Compile Include="Logic\Setting\SettingsHandler.cs" />
     <Compile Include="Logic\Trigger\HardwareKeyboardTrigger.cs" />
@@ -130,6 +131,7 @@
     <Compile Include="Logic\Trigger\MouseMoveTrigger.cs" />
     <Compile Include="Logic\Trigger\MouseScrollTrigger.cs" />
     <Compile Include="Logic\Trigger\MouseTriggerOld.cs" />
+    <Compile Include="Logic\Trigger\TimerTrigger.cs" />
     <Compile Include="Logic\Trigger\TriggerManager.cs" />
     <Compile Include="Logic\Trigger\TriggerState\ITriggerState.cs" />
     <Compile Include="Logic\Trigger\TriggerState\HardwareKeyboardTriggerState.cs" />

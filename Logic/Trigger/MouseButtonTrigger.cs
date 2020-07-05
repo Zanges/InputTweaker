@@ -19,20 +19,20 @@ namespace InputTweaker.Logic.Trigger
             switch (triggerState.TriggerOn)
             {
                 case TriggerOn.Down:
-                    success = MouseButtonHelper.ParseMouseButtonToMouseFilter(triggerState.Button, true, out filter);
+                    success = MouseHelper.ParseMouseButtonToMouseFilter(triggerState.Button, true, out filter);
                     break;
                 case TriggerOn.Up:
-                    success = MouseButtonHelper.ParseMouseButtonToMouseFilter(triggerState.Button, false, out filter);
+                    success = MouseHelper.ParseMouseButtonToMouseFilter(triggerState.Button, false, out filter);
                     break;
                 case TriggerOn.Both:
                     MouseFilter down;
                     MouseFilter up;
-                    success = MouseButtonHelper.ParseMouseButtonToMouseFilter(triggerState.Button, true, out down);
+                    success = MouseHelper.ParseMouseButtonToMouseFilter(triggerState.Button, true, out down);
                     if (!success)
                     {
                         return;
                     }
-                    success = MouseButtonHelper.ParseMouseButtonToMouseFilter(triggerState.Button, false, out up);
+                    success = MouseHelper.ParseMouseButtonToMouseFilter(triggerState.Button, false, out up);
                     filter = (down | up);
                     break;
                 case TriggerOn.None:
@@ -47,7 +47,7 @@ namespace InputTweaker.Logic.Trigger
             
             _hook = new MouseHook(filter, (ref MouseStroke mouseStroke) =>
             {
-                if (action.Execute(MouseButtonHelper.IsButtonDown(mouseStroke.State)))
+                if (action.Execute(MouseHelper.IsButtonDown(mouseStroke.State)))
                 {
                     mouseStroke = new MouseStroke();
                 }

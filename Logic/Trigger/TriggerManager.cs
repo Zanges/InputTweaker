@@ -14,7 +14,8 @@ namespace InputTweaker.Logic.Trigger
         private static readonly List<VirtualKeyboardTrigger> VirtualKeyboardTriggers = new List<VirtualKeyboardTrigger>();
         private static readonly List<MouseButtonTrigger> MouseButtonTriggers = new List<MouseButtonTrigger>();
         private static readonly List<MouseScrollTrigger> MouseScrollTriggers = new List<MouseScrollTrigger>();
-        private static readonly List<MouseMoveTrigger> mouseMoveTriggers = new List<MouseMoveTrigger>();
+        private static readonly List<MouseMoveTrigger> MouseMoveTriggers = new List<MouseMoveTrigger>();
+        private static readonly List<TimerTrigger> timerTriggers = new List<TimerTrigger>();
 
         public static void Initialize()
         {
@@ -61,7 +62,14 @@ namespace InputTweaker.Logic.Trigger
                         case TriggerType.MouseMove:
                             foreach (KeyValuePair<ITriggerState, ActionBase> triggerStateToActionSet in triggerStateToActionQueueMap)
                             {
-                                mouseMoveTriggers.Add(new MouseMoveTrigger((MouseMoveTriggerState) triggerStateToActionSet.Key, triggerStateToActionSet.Value));
+                                MouseMoveTriggers.Add(new MouseMoveTrigger((MouseMoveTriggerState) triggerStateToActionSet.Key, triggerStateToActionSet.Value));
+                            }
+                            break;
+                        
+                        case TriggerType.Timer:
+                            foreach (KeyValuePair<ITriggerState, ActionBase> triggerStateToActionSet in triggerStateToActionQueueMap)
+                            {
+                                timerTriggers.Add(new TimerTrigger(5000, triggerStateToActionSet.Value));
                             }
                             break;
 
@@ -106,11 +114,17 @@ namespace InputTweaker.Logic.Trigger
                 }
                 MouseScrollTriggers.Clear();
                 
-                foreach (MouseMoveTrigger mouseMoveTrigger in mouseMoveTriggers)
+                foreach (MouseMoveTrigger mouseMoveTrigger in MouseMoveTriggers)
                 {
                     mouseMoveTrigger.Cleanup();
                 }
-                mouseMoveTriggers.Clear();
+                MouseMoveTriggers.Clear();
+                
+                foreach (TimerTrigger timerTrigger in timerTriggers)
+                {
+                    timerTrigger.Cleanup();
+                }
+                timerTriggers.Clear();
             }
         }
 

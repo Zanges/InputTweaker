@@ -48,6 +48,11 @@ namespace InputTweaker.Logic.Setting
                             new ActionBase(),
                             new ActionBase()
                             )
+                },
+                [TriggerType.Timer] = new Dictionary<ITriggerState, ActionBase>
+                {
+                    [new MouseButtonTriggerState(MouseButton.Left, TriggerOn.Both)] =
+                        new LogMessageAction("TIMER")
                 }
             };
         }

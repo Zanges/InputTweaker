@@ -25,9 +25,9 @@ namespace InputTweaker.Logic.Trigger.TriggerState
                 switch (TriggerOn)
                 {
                     case TriggerOn.Down:
-                        return !MouseButtonHelper.IsButtonDown(mouseState);
+                        return !MouseHelper.IsButtonDown(mouseState);
                     case TriggerOn.Up:
-                        return MouseButtonHelper.IsButtonDown(mouseState);
+                        return MouseHelper.IsButtonDown(mouseState);
                 }
             }
 
