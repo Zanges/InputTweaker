@@ -109,11 +109,11 @@
     <Compile Include="Logic\Action\ActionBase.cs" />
     <Compile Include="Logic\Action\BlockInputAction.cs" />
     <Compile Include="Logic\Action\BranchAction.cs" />
-    <Compile Include="Logic\Action\DecisionBoolAction.cs" />
-    <Compile Include="Logic\Action\DecisionDeltaAction.cs" />
+    <Compile Include="Logic\Action\SplitDeltaPositiveNegativeAction.cs" />
     <Compile Include="Logic\Action\LogInputAction.cs" />
     <Compile Include="Logic\Action\LogMessageAction.cs" />
     <Compile Include="Logic\Action\SplitBoolUpDownAction.cs" />
+    <Compile Include="Logic\Action\SplitDeltaPositiveNegativeAsSingleTriggerAction.cs" />
     <Compile Include="Logic\Enum\ActionType.cs" />
     <Compile Include="Logic\Enum\JoystickAction.cs" />
     <Compile Include="Logic\Enum\MouseAction.cs" />

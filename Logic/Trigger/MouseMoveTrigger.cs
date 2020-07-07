@@ -30,21 +30,6 @@ namespace InputTweaker.Logic.Trigger
                 
                 if (delta != 0)
                 {
-                    if (triggerState.TriggerOn != TriggerOn.Both)
-                    {
-                        if (triggerState.TriggerOn == TriggerOn.Down)
-                        {
-                            if (!MouseHelper.IsMoveDown(delta))
-                            {
-                                return;
-                            }
-                        }
-                        else if (MouseHelper.IsMoveDown(delta))
-                        {
-                            return;
-                        }
-                    }
-
                     if (action.Execute(delta))
                     {
                         mouseStroke = new MouseStroke();

@@ -5,12 +5,10 @@ namespace InputTweaker.Logic.Trigger.TriggerState
     public class MouseMoveTriggerState : ITriggerState
     {
         public MouseAxis Axis { get; private set; }
-        public TriggerOn TriggerOn { get; private set; }
 
-        public MouseMoveTriggerState(MouseAxis axis, TriggerOn triggerOn)
+        public MouseMoveTriggerState(MouseAxis axis)
         {
             Axis = axis;
-            TriggerOn = triggerOn;
         }
     }
 }

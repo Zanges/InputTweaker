@@ -17,21 +17,6 @@ namespace InputTweaker.Logic.Trigger
             {
                 _hook = new MouseHook(filter, (ref MouseStroke mouseStroke) =>
                 {
-                    if (triggerState.TriggerOn != TriggerOn.Both)
-                    {
-                        if (triggerState.TriggerOn == TriggerOn.Down)
-                        {
-                            if (!MouseHelper.IsScrollDown(mouseStroke.Rolling))
-                            {
-                                return;
-                            }
-                        }
-                        else if (MouseHelper.IsScrollDown(mouseStroke.Rolling))
-                        {
-                            return;
-                        }
-                    }
-                    
                     if (action.Execute(mouseStroke.Rolling))
                     {
                         mouseStroke = new MouseStroke();

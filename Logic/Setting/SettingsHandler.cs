@@ -36,24 +36,25 @@ namespace InputTweaker.Logic.Setting
                 },
                 [TriggerType.MouseScroll] = new Dictionary<ITriggerState, ActionBase>
                 {
-                    [new MouseScrollTriggerState(MouseScroll.Vertical, TriggerOn.Both)] = 
-                        new BlockInputAction(new DecisionDeltaAction(
-                            new LogMessageAction("up"), 
-                            new LogMessageAction("down")
-                            ))
+                    [new MouseScrollTriggerState(MouseScroll.Vertical)] = 
+                        new BlockInputAction(new SplitDeltaPositiveNegativeAction(
+                            new LogInputAction(), 
+                            new LogInputAction(),
+                            false,
+                            20
+                        ))
                 },
                 [TriggerType.MouseMove] = new Dictionary<ITriggerState, ActionBase>
                 {
-                    [new MouseMoveTriggerState(MouseAxis.X, TriggerOn.Both)] = 
-                        new DecisionDeltaAction(
-                            new ActionBase(),
-                            new ActionBase()
-                            )
+                    [new MouseMoveTriggerState(MouseAxis.X)] = 
+                        new SplitDeltaPositiveNegativeAsSingleTriggerAction(
+                            new LogMessageAction("p", 200), 
+                            new LogMessageAction("n", 200))
                 },
                 [TriggerType.Timer] = new Dictionary<ITriggerState, ActionBase>
                 {
                     [new TimerTriggerState(2000)] =
-                        new LogMessageAction("timer")
+                        new ActionBase()
                 }
             };
         }

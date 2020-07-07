@@ -21,7 +21,14 @@ namespace InputTweaker.Logic.Ui.Common
             }
             
             Console.WriteLine(message);
-            ServiceLocator.Current.GetInstance<MainViewModel>().AddLogEntry(message);
+            try
+            {
+                ServiceLocator.Current.GetInstance<MainViewModel>().AddLogEntry(message);
+            }
+            catch (Exception)
+            {
+                // ignored
+            }
         }
     }
 }
