@@ -13,38 +13,12 @@ namespace InputTweaker.Logic.Trigger
 
         public MouseButtonTrigger(MouseButtonTriggerState triggerState, ActionBase action)
         {
-            MouseFilter filter;
-            bool success;
-            
-            switch (triggerState.TriggerOn)
-            {
-                case TriggerOn.Down:
-                    success = MouseHelper.ParseMouseButtonToMouseFilter(triggerState.Button, true, out filter);
-                    break;
-                case TriggerOn.Up:
-                    success = MouseHelper.ParseMouseButtonToMouseFilter(triggerState.Button, false, out filter);
-                    break;
-                case TriggerOn.Both:
-                    MouseFilter down;
-                    MouseFilter up;
-                    success = MouseHelper.ParseMouseButtonToMouseFilter(triggerState.Button, true, out down);
-                    if (!success)
-                    {
-                        return;
-                    }
-                    success = MouseHelper.ParseMouseButtonToMouseFilter(triggerState.Button, false, out up);
-                    filter = (down | up);
-                    break;
-                case TriggerOn.None:
-                    return;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
+            bool success = MouseHelper.ParseMouseButtonToMouseFilter(triggerState.Button, out MouseFilter filter);
             if (!success)
             {
                 return;
             }
-            
+
             _hook = new MouseHook(filter, (ref MouseStroke mouseStroke) =>
             {
                 if (action.Execute(MouseHelper.IsButtonDown(mouseStroke.State)))

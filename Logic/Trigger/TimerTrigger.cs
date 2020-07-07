@@ -1,5 +1,6 @@
 ﻿using System.Timers;
 using InputTweaker.Logic.Action;
+using InputTweaker.Logic.Trigger.TriggerState;
 
 namespace InputTweaker.Logic.Trigger
 {
@@ -7,9 +8,9 @@ namespace InputTweaker.Logic.Trigger
     {
         private readonly Timer _timer;
 
-        public TimerTrigger(double interval, ActionBase action)
+        public TimerTrigger(TimerTriggerState triggerState, ActionBase action)
         {
-            _timer = new Timer(interval);
+            _timer = new Timer(triggerState.Interval);
             _timer.Elapsed += (sender, eventArgs) =>
             {
                 action.Execute(true);

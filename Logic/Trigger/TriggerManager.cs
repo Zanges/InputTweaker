@@ -15,7 +15,7 @@ namespace InputTweaker.Logic.Trigger
         private static readonly List<MouseButtonTrigger> MouseButtonTriggers = new List<MouseButtonTrigger>();
         private static readonly List<MouseScrollTrigger> MouseScrollTriggers = new List<MouseScrollTrigger>();
         private static readonly List<MouseMoveTrigger> MouseMoveTriggers = new List<MouseMoveTrigger>();
-        private static readonly List<TimerTrigger> timerTriggers = new List<TimerTrigger>();
+        private static readonly List<TimerTrigger> TimerTriggers = new List<TimerTrigger>();
 
         public static void Initialize()
         {
@@ -69,7 +69,7 @@ namespace InputTweaker.Logic.Trigger
                         case TriggerType.Timer:
                             foreach (KeyValuePair<ITriggerState, ActionBase> triggerStateToActionSet in triggerStateToActionQueueMap)
                             {
-                                timerTriggers.Add(new TimerTrigger(5000, triggerStateToActionSet.Value));
+                                TimerTriggers.Add(new TimerTrigger((TimerTriggerState) triggerStateToActionSet.Key, triggerStateToActionSet.Value));
                             }
                             break;
 
@@ -120,11 +120,11 @@ namespace InputTweaker.Logic.Trigger
                 }
                 MouseMoveTriggers.Clear();
                 
-                foreach (TimerTrigger timerTrigger in timerTriggers)
+                foreach (TimerTrigger timerTrigger in TimerTriggers)
                 {
                     timerTrigger.Cleanup();
                 }
-                timerTriggers.Clear();
+                TimerTriggers.Clear();
             }
         }
 

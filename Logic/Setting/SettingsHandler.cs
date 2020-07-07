@@ -20,23 +20,24 @@ namespace InputTweaker.Logic.Setting
             {
                 [TriggerType.HardwareKeyboard] = new Dictionary<ITriggerState, ActionBase>
                 {
-                    [new HardwareKeyboardTriggerState(KeyCode.W, TriggerOn.Both)] = 
+                    [new HardwareKeyboardTriggerState(KeyCode.W)] = 
                         new LogMessageAction("HardwareKeyboardTrigger")
                 },
                 [TriggerType.VirtualKeyboard] = new Dictionary<ITriggerState, ActionBase>
                 {
-                    [new VirtualKeyboardTriggerState(Keys.Q, TriggerOn.Down)] =
-                        new LogMessageAction("q")
+                    [new VirtualKeyboardTriggerState(Keys.Q)] =
+                        new SplitBoolUpDownAction(
+                            new LogMessageAction("down"), new LogMessageAction("up"))
                 },
                 [TriggerType.MouseButton] = new Dictionary<ITriggerState, ActionBase>
                 {
-                    [new MouseButtonTriggerState(MouseButton.Right, TriggerOn.Both)] = 
+                    [new MouseButtonTriggerState(MouseButton.Right)] = 
                         new LogInputAction()
                 },
                 [TriggerType.MouseScroll] = new Dictionary<ITriggerState, ActionBase>
                 {
                     [new MouseScrollTriggerState(MouseScroll.Vertical, TriggerOn.Both)] = 
-                        new BlockInputAction(new DeltaDecisionAction(
+                        new BlockInputAction(new DecisionDeltaAction(
                             new LogMessageAction("up"), 
                             new LogMessageAction("down")
                             ))
@@ -44,15 +45,15 @@ namespace InputTweaker.Logic.Setting
                 [TriggerType.MouseMove] = new Dictionary<ITriggerState, ActionBase>
                 {
                     [new MouseMoveTriggerState(MouseAxis.X, TriggerOn.Both)] = 
-                        new DeltaDecisionAction(
+                        new DecisionDeltaAction(
                             new ActionBase(),
                             new ActionBase()
                             )
                 },
                 [TriggerType.Timer] = new Dictionary<ITriggerState, ActionBase>
                 {
-                    [new MouseButtonTriggerState(MouseButton.Left, TriggerOn.Both)] =
-                        new LogMessageAction("TIMER")
+                    [new TimerTriggerState(2000)] =
+                        new LogMessageAction("timer")
                 }
             };
         }

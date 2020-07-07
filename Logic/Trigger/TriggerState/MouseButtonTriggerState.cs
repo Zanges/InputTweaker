@@ -9,28 +9,14 @@ namespace InputTweaker.Logic.Trigger.TriggerState
     public class MouseButtonTriggerState : ITriggerState
     {
         public MouseButton Button { get; private set; }
-        public TriggerOn TriggerOn { get; private set; }
         
-        public MouseButtonTriggerState(MouseButton button, TriggerOn triggerOn)
+        public MouseButtonTriggerState(MouseButton button)
         {
             Button = button;
-            TriggerOn = triggerOn;
         }
 
         public bool Match(MouseState mouseState)
         {
-            if (TriggerOn != TriggerOn.Both)
-            {
-                // ReSharper disable once SwitchStatementMissingSomeEnumCasesNoDefault
-                switch (TriggerOn)
-                {
-                    case TriggerOn.Down:
-                        return !MouseHelper.IsButtonDown(mouseState);
-                    case TriggerOn.Up:
-                        return MouseHelper.IsButtonDown(mouseState);
-                }
-            }
-
             switch (Button)
             {
                 case MouseButton.Left:

@@ -71,24 +71,24 @@ namespace InputTweaker.Logic.Helper
             }
         }
 
-        public static bool ParseMouseButtonToMouseFilter(MouseButton mouseButton, bool down, out MouseFilter mouseFilter)
+        public static bool ParseMouseButtonToMouseFilter(MouseButton mouseButton, out MouseFilter mouseFilter)
         {
             switch (mouseButton)
             {
                 case MouseButton.Left:
-                    mouseFilter = down ? MouseFilter.LeftButtonDown : MouseFilter.LeftButtonUp;
+                    mouseFilter = MouseFilter.LeftButtonDown | MouseFilter.LeftButtonUp;
                     return true;
                 case MouseButton.Middle:
-                    mouseFilter = down ? MouseFilter.MiddleButtonDown : MouseFilter.MiddleButtonUp;
+                    mouseFilter = MouseFilter.MiddleButtonDown | MouseFilter.MiddleButtonUp;
                     return true;
                 case MouseButton.Right:
-                    mouseFilter = down ? MouseFilter.RightButtonDown : MouseFilter.RightButtonUp;
+                    mouseFilter = MouseFilter.RightButtonDown | MouseFilter.RightButtonUp;
                     return true;
                 case MouseButton.XButton1:
-                    mouseFilter = down ? MouseFilter.ExtraButton1Down : MouseFilter.ExtraButton1Up;
+                    mouseFilter = MouseFilter.ExtraButton1Down | MouseFilter.ExtraButton1Up;
                     return true;
                 case MouseButton.XButton2:
-                    mouseFilter = down ? MouseFilter.ExtraButton2Down : MouseFilter.ExtraButton2Up;
+                    mouseFilter = MouseFilter.ExtraButton2Down | MouseFilter.ExtraButton2Up;
                     return true;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(mouseButton), mouseButton, null);

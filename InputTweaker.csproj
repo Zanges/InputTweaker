@@ -109,10 +109,11 @@
     <Compile Include="Logic\Action\ActionBase.cs" />
     <Compile Include="Logic\Action\BlockInputAction.cs" />
     <Compile Include="Logic\Action\BranchAction.cs" />
-    <Compile Include="Logic\Action\BoolDecisionsAction.cs" />
-    <Compile Include="Logic\Action\DeltaDecisionAction.cs" />
+    <Compile Include="Logic\Action\DecisionBoolAction.cs" />
+    <Compile Include="Logic\Action\DecisionDeltaAction.cs" />
     <Compile Include="Logic\Action\LogInputAction.cs" />
     <Compile Include="Logic\Action\LogMessageAction.cs" />
+    <Compile Include="Logic\Action\SplitBoolUpDownAction.cs" />
     <Compile Include="Logic\Enum\ActionType.cs" />
     <Compile Include="Logic\Enum\JoystickAction.cs" />
     <Compile Include="Logic\Enum\MouseAction.cs" />
@@ -138,6 +139,7 @@
     <Compile Include="Logic\Trigger\TriggerState\MouseButtonTriggerState.cs" />
     <Compile Include="Logic\Trigger\TriggerState\MouseMoveTriggerState.cs" />
     <Compile Include="Logic\Trigger\TriggerState\MouseScrollTriggerState.cs" />
+    <Compile Include="Logic\Trigger\TriggerState\TimerTriggerState.cs" />
     <Compile Include="Logic\Trigger\TriggerState\VirtualKeyboardTriggerState.cs" />
     <Compile Include="Logic\Trigger\TriggerToActionSet\HardwareKeyboardTriggerActionSet.cs" />
     <Compile Include="Logic\Trigger\TriggerToActionSet\VirtualKeyboardTriggerActionSet.cs" />

@@ -13,7 +13,7 @@ namespace InputTweaker.Logic.Trigger
         {
             _hook = new KeyboardHook(KeyboardFilter.All, (ref KeyStroke keyStroke) =>
             {
-                if (keyStroke.Code == triggerState.KeyCode && triggerState.MatchesPressed(keyStroke.State))
+                if (keyStroke.Code == triggerState.KeyCode)
                 {
                     if (action.Execute(KeyStateHelper.KeyStateToPressedBool(keyStroke.State)))
                     {

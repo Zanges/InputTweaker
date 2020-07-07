@@ -13,19 +13,19 @@ namespace InputTweaker.Logic.Helper
                     return ActionType.None;
                 
                 case TriggerType.HardwareKeyboard:
-                    return (ActionType.Independent | ActionType.Boolean);
+                    return ActionType.Independent | ActionType.Boolean;
                 case TriggerType.VirtualKeyboard:
-                    return (ActionType.Independent | ActionType.Boolean);
+                    return ActionType.Independent | ActionType.Boolean;
                 
                 case TriggerType.MouseButton:
-                    return (ActionType.Independent | ActionType.Boolean);
+                    return ActionType.Independent | ActionType.Boolean;
                 case TriggerType.MouseScroll:
-                    return (ActionType.Independent | ActionType.Delta);
+                    return ActionType.Independent | ActionType.Delta;
                 case TriggerType.MouseMove:
-                    return (ActionType.Independent | ActionType.Delta);
+                    return ActionType.Independent | ActionType.Delta;
                 
                 case TriggerType.Timer:
-                    return (ActionType.Independent | ActionType.SingleTrigger);
+                    return ActionType.Independent | ActionType.SingleTrigger;
                 
                 case TriggerType.Serial:
                     throw new NotImplementedException();

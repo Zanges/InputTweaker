@@ -1,12 +1,12 @@
 ﻿namespace InputTweaker.Logic.Action
 {
-    public class BoolDecisionsAction : ActionBase
+    public class DecisionBoolAction : ActionBase
     {
         private readonly ActionBase _actionTrue;
         private readonly ActionBase _actionFalse;
         private readonly bool _keepInput;
 
-        public BoolDecisionsAction(ActionBase actionTrue, ActionBase actionFalse, bool keepInput = false)
+        public DecisionBoolAction(ActionBase actionTrue, ActionBase actionFalse, bool keepInput = false)
         {
             _actionTrue = actionTrue;
             _actionFalse = actionFalse;

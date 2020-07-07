@@ -26,23 +26,8 @@ namespace InputTweaker.Logic.Trigger
             _triggerState = triggerState;
             _action = action;
 
-            switch (triggerState.TriggerOn)
-            {
-                case TriggerOn.Both:
-                    Interceptor.KeyDown += HandleDown;
-                    Interceptor.KeyUp += HandleUp;
-                    break;
-                case TriggerOn.Down:
-                    Interceptor.KeyDown += HandleDown;
-                    break;
-                case TriggerOn.Up:
-                    Interceptor.KeyUp += HandleUp;
-                    break;
-                case TriggerOn.None:
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
+            Interceptor.KeyDown += HandleDown;
+            Interceptor.KeyUp += HandleUp;
         }
 
         private void HandleDown(object sender, KeyEventArgs args)
@@ -70,23 +55,8 @@ namespace InputTweaker.Logic.Trigger
                 _initialized = false;
             }
             
-            switch (_triggerState.TriggerOn)
-            {
-                case TriggerOn.Both:
-                    Interceptor.KeyDown -= HandleDown;
-                    Interceptor.KeyUp -= HandleUp;
-                    break;
-                case TriggerOn.Down:
-                    Interceptor.KeyDown -= HandleDown;
-                    break;
-                case TriggerOn.Up:
-                    Interceptor.KeyUp -= HandleUp;
-                    break;
-                case TriggerOn.None:
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
+            Interceptor.KeyDown -= HandleDown;
+            Interceptor.KeyUp -= HandleUp;
         }
     }
 }

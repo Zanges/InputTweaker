@@ -1,11 +1,11 @@
 ﻿namespace InputTweaker.Logic.Action
 {
-    public class DeltaDecisionAction : ActionBase
+    public class DecisionDeltaAction : ActionBase
     {
         private readonly ActionBase _actionPositive;
         private readonly ActionBase _actionNegative;
 
-        public DeltaDecisionAction(ActionBase actionPositive, ActionBase actionNegative)
+        public DecisionDeltaAction(ActionBase actionPositive, ActionBase actionNegative)
         {
             _actionPositive = actionPositive;
             _actionNegative = actionNegative;
