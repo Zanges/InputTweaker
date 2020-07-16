@@ -11,8 +11,8 @@ namespace InputTweaker.Logic.Initialisation
     {
         public static readonly InputInterceptorWrapper Instance = new InputInterceptorWrapper(); // Singleton
 
-        private bool _isReady;
-
+        public bool IsReady { get; private set; }
+        
         private InputInterceptorWrapper()
         {
             
@@ -24,11 +24,18 @@ namespace InputTweaker.Logic.Initialisation
             {
                 if (InputInterceptor.Initialize())
                 {
-                    _isReady = true;
+                    IsReady = true;
+                }
+            }
+            else
+            {
+                if (Install())
+                {
+                    Initialize();
                 }
             }
 
-            return _isReady;
+            return IsReady;
         }
 
         public bool Install()
@@ -54,7 +61,5 @@ namespace InputTweaker.Logic.Initialisation
             Messenger.Default.Send(new OpenGenericMessageWindowMessage("InputInterceptor Driver Installation needs Admin access", "Please restart this Program as Admin"));
             return false;
         }
-
-        public bool IsReady => _isReady;
     }
 }

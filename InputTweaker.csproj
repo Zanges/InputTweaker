@@ -72,8 +72,32 @@
       <HintPath>packages\Open.WinKeyboardHook.1.0.14\lib\net40\Open.WinKeyboardHook.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Overlay.NET, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>packages\Overlay.NET.1.0.2\lib\Overlay.NET.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Process.NET, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>packages\Overlay.NET.1.0.2\lib\Process.NET.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="PropertyChanged, Version=3.2.8.0, Culture=neutral, PublicKeyToken=ee3ee20bcf148ddd">
       <HintPath>packages\PropertyChanged.Fody.3.2.8\lib\net40\PropertyChanged.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SharpDX, Version=3.1.2.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1">
+      <HintPath>packages\Overlay.NET.1.0.2\lib\SharpDX.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SharpDX.Direct2D1, Version=3.1.2.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1">
+      <HintPath>packages\Overlay.NET.1.0.2\lib\SharpDX.Direct2D1.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SharpDX.DXGI, Version=3.1.2.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1">
+      <HintPath>packages\Overlay.NET.1.0.2\lib\SharpDX.DXGI.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SharpDX.Mathematics, Version=3.1.2.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1">
+      <HintPath>packages\Overlay.NET.1.0.2\lib\SharpDX.Mathematics.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -107,13 +131,18 @@
     </Compile>
     <Compile Include="CustomControl\LoggingListBox.cs" />
     <Compile Include="Logic\Action\ActionBase.cs" />
+    <Compile Include="Logic\Action\AxisMoveXBoxAction.cs" />
     <Compile Include="Logic\Action\BlockInputAction.cs" />
     <Compile Include="Logic\Action\BranchAction.cs" />
+    <Compile Include="Logic\Action\ButtonPressXBoxAction.cs" />
+    <Compile Include="Logic\Action\ModifyVirtualAxisExponentialAction.cs" />
+    <Compile Include="Logic\Action\ReplaceValueWithAxisVariable.cs" />
     <Compile Include="Logic\Action\SplitDeltaPositiveNegativeAction.cs" />
     <Compile Include="Logic\Action\LogInputAction.cs" />
     <Compile Include="Logic\Action\LogMessageAction.cs" />
     <Compile Include="Logic\Action\SplitBoolUpDownAction.cs" />
     <Compile Include="Logic\Action\SplitDeltaPositiveNegativeAsSingleTriggerAction.cs" />
+    <Compile Include="Logic\Action\TransformDeltaToVirtualAxis.cs" />
     <Compile Include="Logic\Enum\ActionType.cs" />
     <Compile Include="Logic\Enum\JoystickAction.cs" />
     <Compile Include="Logic\Enum\MouseAction.cs" />
@@ -124,8 +153,10 @@
     <Compile Include="Logic\Enum\TriggerType.cs" />
     <Compile Include="Logic\Helper\ActionHelper.cs" />
     <Compile Include="Logic\Helper\KeyStateHelper.cs" />
+    <Compile Include="Logic\Helper\MathHelper.cs" />
     <Compile Include="Logic\Helper\MouseHelper.cs" />
     <Compile Include="Logic\Initialisation\InputInterceptorWrapper.cs" />
+    <Compile Include="Logic\Initialisation\ViGEmWrapper.cs" />
     <Compile Include="Logic\Setting\SettingsHandler.cs" />
     <Compile Include="Logic\Trigger\HardwareKeyboardTrigger.cs" />
     <Compile Include="Logic\Trigger\MouseButtonTrigger.cs" />
@@ -149,6 +180,7 @@
     <Compile Include="Logic\Ui\Window\OpenChildWindowMessage.cs" />
     <Compile Include="Logic\Ui\Window\OpenGenericMessageWindowMessage.cs" />
     <Compile Include="Logic\Ui\Window\OpenProfileWindowMessage.cs" />
+    <Compile Include="Logic\Variable\AxisVariable.cs" />
     <Compile Include="ViewModel\ChildViewModel.cs" />
     <Compile Include="ViewModel\Generic\MessageViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
@@ -211,6 +243,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Logic\Ui\Commandline" />
+    <Folder Include="Logic\Ui\Overlay" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\Fody.6.1.1\build\Fody.targets" Condition="Exists('packages\Fody.6.1.1\build\Fody.targets')" />

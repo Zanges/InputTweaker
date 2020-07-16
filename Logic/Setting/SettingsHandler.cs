@@ -5,6 +5,7 @@ using InputInterceptorNS;
 using InputTweaker.Logic.Action;
 using InputTweaker.Logic.Enum;
 using InputTweaker.Logic.Trigger.TriggerState;
+using Nefarius.ViGEm.Client.Targets.Xbox360;
 
 namespace InputTweaker.Logic.Setting
 {
@@ -31,25 +32,31 @@ namespace InputTweaker.Logic.Setting
                 },
                 [TriggerType.MouseButton] = new Dictionary<ITriggerState, ActionBase>
                 {
-                    [new MouseButtonTriggerState(MouseButton.Right)] = 
-                        new LogInputAction()
+                    [new MouseButtonTriggerState(MouseButton.Left)] = 
+                        new LogMessageAction("xbox",
+                            100,
+                            new ButtonPressXBoxAction(Xbox360Button.A))
                 },
                 [TriggerType.MouseScroll] = new Dictionary<ITriggerState, ActionBase>
                 {
                     [new MouseScrollTriggerState(MouseScroll.Vertical)] = 
-                        new BlockInputAction(new SplitDeltaPositiveNegativeAction(
-                            new LogInputAction(), 
-                            new LogInputAction(),
-                            false,
-                            20
-                        ))
+                        new ActionBase()
                 },
                 [TriggerType.MouseMove] = new Dictionary<ITriggerState, ActionBase>
                 {
                     [new MouseMoveTriggerState(MouseAxis.X)] = 
-                        new SplitDeltaPositiveNegativeAsSingleTriggerAction(
-                            new LogMessageAction("p", 200), 
-                            new LogMessageAction("n", 200))
+                        new TransformDeltaToVirtualAxis(
+                            "x",
+                            10,
+                            true,
+                            new ModifyVirtualAxisExponentialAction(
+                                "x", 
+                                2.5f, 
+                                true, 
+                                new AxisMoveXBoxAction(Xbox360Axis.LeftThumbX,
+                                    new LogInputAction())
+                                )
+                            )
                 },
                 [TriggerType.Timer] = new Dictionary<ITriggerState, ActionBase>
                 {

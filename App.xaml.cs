@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows;
+using InputTweaker.Logic.Initialisation;
 using InputTweaker.Logic.Setting;
 using InputTweaker.Logic.Trigger;
 using InputTweaker.View;
@@ -26,7 +27,6 @@ namespace InputTweaker
             SettingsHandler.Initialize();
             if (!args.Contains("--notrigger"))
             {
-                //TriggerInitialisation.Instance.Initialize();
                 TriggerManager.Initialize();
             }
 
