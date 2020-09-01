@@ -176,6 +176,8 @@
     <Compile Include="Logic\Trigger\TriggerToActionSet\VirtualKeyboardTriggerActionSet.cs" />
     <Compile Include="Logic\Trigger\VirtualKeyboardTrigger.cs" />
     <Compile Include="Logic\Ui\Common\LogWriter.cs" />
+    <Compile Include="Logic\Ui\Overlay\Overlay.cs" />
+    <Compile Include="Logic\Ui\Overlay\WpfOverlay.cs" />
     <Compile Include="Logic\Ui\Window\MessageListener.cs" />
     <Compile Include="Logic\Ui\Window\OpenChildWindowMessage.cs" />
     <Compile Include="Logic\Ui\Window\OpenGenericMessageWindowMessage.cs" />
@@ -243,7 +245,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Logic\Ui\Commandline" />
-    <Folder Include="Logic\Ui\Overlay" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\Fody.6.1.1\build\Fody.targets" Condition="Exists('packages\Fody.6.1.1\build\Fody.targets')" />

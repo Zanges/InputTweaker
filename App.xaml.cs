@@ -29,6 +29,11 @@ namespace InputTweaker
             {
                 TriggerManager.Initialize();
             }
+            
+            if (!args.Contains("--nooverlay"))
+            {
+                Logic.Ui.Overlay.Overlay.Initialize();
+            }
 
             if (args.Contains("-g") || args.Contains("--guiless"))
             {

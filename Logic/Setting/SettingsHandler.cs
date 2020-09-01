@@ -32,7 +32,7 @@ namespace InputTweaker.Logic.Setting
                 },
                 [TriggerType.MouseButton] = new Dictionary<ITriggerState, ActionBase>
                 {
-                    [new MouseButtonTriggerState(MouseButton.Left)] = 
+                    [new MouseButtonTriggerState(MouseButton.Right)] = 
                         new LogMessageAction("xbox",
                             100,
                             new ButtonPressXBoxAction(Xbox360Button.A))
@@ -45,18 +45,7 @@ namespace InputTweaker.Logic.Setting
                 [TriggerType.MouseMove] = new Dictionary<ITriggerState, ActionBase>
                 {
                     [new MouseMoveTriggerState(MouseAxis.X)] = 
-                        new TransformDeltaToVirtualAxis(
-                            "x",
-                            10,
-                            true,
-                            new ModifyVirtualAxisExponentialAction(
-                                "x", 
-                                2.5f, 
-                                true, 
-                                new AxisMoveXBoxAction(Xbox360Axis.LeftThumbX,
-                                    new LogInputAction())
-                                )
-                            )
+                        new ActionBase()
                 },
                 [TriggerType.Timer] = new Dictionary<ITriggerState, ActionBase>
                 {
